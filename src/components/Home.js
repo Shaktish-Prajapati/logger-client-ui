@@ -17,6 +17,9 @@ const Home = () => {
     const Dispatch = useDispatch();
     const getAllProjectReducer = useSelector(state => state.getAllProjectReducer)
     const {loading, allProjectData} = getAllProjectReducer
+
+    const adminLoginReducer = useSelector(state => state.adminLoginReducer)
+    const { adminInfo} = adminLoginReducer
     
     useEffect(() => {
         console.log('home page useeffect')
@@ -35,6 +38,10 @@ const Home = () => {
             
                 
             <Row /* xs={2} md={4} lg={6} */ >
+                
+                {
+                    adminInfo.data && adminInfo.data.isSuperAdmin ? 
+                
                 <Col sm={4} >
                     <Card className="addProjectButton">
                     <Card.Body /* className="addProjectButton" */>
@@ -63,7 +70,9 @@ const Home = () => {
                         </Card.Text>
                     </Card.Body>
                     </Card>
-                </Col>
+                </Col> :''
+
+                }
 
                 {/* <Col sm={4} > */}
                     {/* <Card className="addProjectButton"> */}
