@@ -66,3 +66,28 @@ table {
   background: none;
   background-color: #3E8BE2;
 }
+
+
+ul.pagination {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  margin-top:3%;
+  /* margin-left:40% */
+}
+ul.pagination li {display: inline;}
+ul.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+ul.pagination li.active {
+  background-color: #3E8BE2;
+  border-radius: 5px;
+  color: white;
+}
+ul.pagination li:hover:not(.active) {
+  background-color: #c4dcf8;
+  border-radius: 5px;
+}

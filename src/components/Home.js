@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import Navbarr from './Navbarr'
 import './Home.css'
-import { faHome, faWrench, faCopy, faPlus, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faWrench, faCopy, faPlus, faArrowCircleRight, faSignOutAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Card, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,6 +20,20 @@ const Home = () => {
 
     const adminLoginReducer = useSelector(state => state.adminLoginReducer)
     const { adminInfo} = adminLoginReducer
+
+    const navbardetail = {
+        name: adminInfo.data.name,
+        dashName:'Welcome',
+        link1:{
+            iconName:faHome,
+            linkName:'Home'
+        },
+        link2:{
+            iconName:faUserAlt,
+            linkName:'Profile'
+        }
+
+    }
     
     useEffect(() => {
         console.log('home page useeffect')
@@ -32,7 +46,7 @@ const Home = () => {
 
     return (
         <>
-        <Navbarr />
+        <Navbarr navbardetails = {navbardetail}  />
         <div className='homeCards' >
                 {loading ?  <SpinLoader /> :
             

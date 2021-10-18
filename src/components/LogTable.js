@@ -4,6 +4,7 @@ import './LogTable.css'
 import * as IoIcons from 'react-icons/io'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProjectByCode } from '../action/ProjectAction'
+import { faHome, faWrench, faCopy, faPlus, faArrowCircleRight, faSignOutAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 import SpinLoader from './support/SpinLoader'
 
 
@@ -12,16 +13,37 @@ import SpinLoader from './support/SpinLoader'
 const LogTable = () => {
 
     const [tabel, setRefresh] = useState('')
+    const [logPerPage, setlogPerPage] = useState(5)
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get('code')
+    const projectName = urlParams.get('name')
     const dispatch = useDispatch()
     const getAllLogByCodeReducer = useSelector(state => state.getAllLogByCodeReducer)
     const {loading, data} = getAllLogByCodeReducer
     console.log(code)
 
+
+    const navbardetail = {
+      name: projectName,
+      dashName:projectName,
+      link1:{
+          iconName:faHome,
+          linkName:'Home'
+      },
+      link2:{
+          iconName:faUserAlt,
+          linkName:'Profile'
+      }
+
+  }
+
     const refreshButton = ()=>{
         dispatch(getProjectByCode(code))
+    }
+
+    const getResult = ()=>{
+      dispatch(getProjectByCode(code))
     }
 
     useEffect(() => {
@@ -34,7 +56,9 @@ const LogTable = () => {
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
         var rows = table.getElementsByTagName("tr");
-        for (i = 1; i < rows.length; i++) {
+        // for (i = 1; i < rows.length; i++) {
+          console.log(logPerPage)
+        for (i = 1; i < logPerPage; i++) {
           var cells = rows[i].getElementsByTagName("td");
           var j;
           var rowContainsFilter = false;
@@ -100,6 +124,14 @@ const LogTable = () => {
 
 
         </table>
+        <ul className="pagination">  
+        <li onClick={getResult} >Prev</li>  
+        <li onClick={getResult} >1</li>  
+        <li onClick={getResult} >2</li>  
+        <li onClick={getResult} >3</li>  
+        <li onClick={getResult} >4</li>  
+        <li onClick={getResult} >Next</li>   
+      </ul> 
         </div>
 
         </>
