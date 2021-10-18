@@ -1,0 +1,114 @@
+.react-bootstrap-table thead { 
+    /* position: sticky;  */
+    /* top: 0;  */
+    background-color: #3E8BE2; 
+    /* z-index: 1021;  */
+}
+
+table {
+    /* border:solid black 1px; */
+    /* border-radius:6px; */
+    box-shadow: 0px 3px 6px #00000033;
+    -moz-border-radius:6px;
+      border-collapse: collapse;
+      width: 80%;
+      height: 80%;
+      /* margin-left: 10%; */
+      margin-top: 1%;
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 8px;
+      text-align: center;
+    }
+  
+    td {
+      border-left:solid rgb(231, 228, 228) 1px;
+      border-top:solid rgb(231, 228, 228) 1px;
+      border-bottom: solid rgb(231, 228, 228) 1px;
+  }
+  
+  th {
+      background-color: #3E8BE2;
+      color: #fff;
+  }
+  
+  table tr:last-child td:last-child {
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+  } 
+  
+   /* table-style{
+    box-shadow: 0px 3px 6px #00000033;
+  } */
+  
+  th:first-of-type {
+    border-top-left-radius: 10px;
+  }
+  th:last-of-type {
+    border-top-right-radius: 10px;
+  }
+  tr:last-of-type td:first-of-type {
+    border-bottom-left-radius: 10px;
+  }
+  tr:last-of-type td:last-of-type {
+    border-bottom-right-radius: 10px;
+  }
+
+  #myInput{
+    /* border-radius: 15px; */
+    /* width: auto; */
+    height: 50%;
+    margin-bottom: 3%;
+    border-color: none;
+    border-width: 0ch;
+    color: #fff;
+    background: #bbbbbb 0% 0% no-repeat padding-box;
+
+  }
+
+#myInput :active {
+  border-color: #3E8BE2;
+  background: none;
+  background-color: #3E8BE2;
+}
+
+
+ul.pagination {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  margin-top:3%;
+  /* margin-left:40% */
+}
+ul.pagination li {display: inline;}
+ul.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.refreshButton {
+    height:40px;
+    width:40px; 
+    float: right;
+    color:#3E8BE2; 
+    float:'right';
+    margin-right:10px;
+    margin-bottom:10px
+}
+.refreshButton :hover {
+    color:#73a7e2;
+    cursor: pointer; 
+}
+
+/* ul.pagination li.active {
+  background-color: #3E8BE2;
+  border-radius: 5px;
+  color: white;
+} */
+/* ul.pagination li:hover:not(.active) {
+  background-color: #c4dcf8;
+  border-radius: 5px;
+} */

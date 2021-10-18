@@ -21,7 +21,7 @@ const ProjectCard = (props) => {
                         </Card.Text>
                         {/* <Card.Link href="#">Card Link</Card.Link> */}
                         {/* <Card.Link className="leftLinkButton" href="#">{props.data.createdAt} </Card.Link> */}
-                        <Link to={`/logTable?code=${props.data.code}&name=${props.data.name} `} className="rightLinkButton"> <FontAwesomeIcon style={{fontSize:'200%'}}  className='fontAwesomeIconRight' icon={faArrowCircleRight} /> </Link>
+                        <Link to={`/newlogTable?code=${props.data.code}&name=${props.data.name} `} className="rightLinkButton"> <FontAwesomeIcon style={{fontSize:'200%'}}  className='fontAwesomeIconRight' icon={faArrowCircleRight} /> </Link>
                     </Card.Body>
                     </Card>
                 </Col>

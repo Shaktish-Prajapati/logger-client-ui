@@ -81,7 +81,7 @@ const LogTable = () => {
 
     return (
         <>
-        <Navbarr />
+        <Navbarr navbardetails = {navbardetail} />
         <div style={{overflowX: 'auto', marginLeft:'12%'}}>
             <IoIcons.IoIosRefreshCircle onClick={refreshButton} style={{height:'40px',width:'40px', color:'#3E8BE2', float:'right',marginRight:'10px',marginTop:'10px'}} />
 
