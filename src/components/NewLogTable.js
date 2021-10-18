@@ -40,13 +40,6 @@ function priceFormatter(cell, row) {
     );
   }
   
-  
-    const selectOptions = {
-      0: 101,
-      1: 102,
-      2: 103
-    };
-  
     const defaultSorted = [{
       dataField: 'name',
       order: 'desc'
@@ -86,7 +79,7 @@ function priceFormatter(cell, row) {
       sort:true
     }];
 const NewLogTable = () => {
-    const [tabel, setTable] = useState('')
+    const [table, setTable] = useState('')
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get('code')
