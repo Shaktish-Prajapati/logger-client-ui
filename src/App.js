@@ -7,6 +7,7 @@ import Navbarr from './components/Navbarr';
 import Home from './components/Home';
 import LogTable from './components/LogTable';
 import NewLogTable from './components/NewLogTable';
+import Analytics from './components/Analytics';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route exact path='/home' component={Home} />
       <Route exact path='/logTable' component={LogTable} />
       <Route exact path='/newlogTable' component={NewLogTable} />
+      <Route exact path='/analytics' component={Analytics} />
 
 
       </Switch>

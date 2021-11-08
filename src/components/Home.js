@@ -26,11 +26,13 @@ const Home = () => {
         dashName:'Welcome',
         link1:{
             iconName:faHome,
-            linkName:'Home'
+            linkName:'Home',
+            link:`/`
         },
         link2:{
             iconName:faUserAlt,
-            linkName:'Profile'
+            linkName:'Profile',
+            link:`/`
         }
 
     }

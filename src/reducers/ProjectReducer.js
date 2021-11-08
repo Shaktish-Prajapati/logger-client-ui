@@ -9,7 +9,15 @@ import {
 
     UPLOAD_NEW_PROJECT_REQUEST,
     UPLOAD_NEW_PROJECT_REQUEST_SUCCESS,
-    UPLOAD_NEW_PROJECT_REQUEST_FAIL
+    UPLOAD_NEW_PROJECT_REQUEST_FAIL,
+
+    GET_LOG_COUNT_REQUEST,
+    GET_LOG_COUNT_SUCCESS,
+    GET_LOG_COUNT_FAIL,
+
+    GET_LOG_COUNT_BY_DATE_REQUEST,
+    GET_LOG_COUNT_BY_DATE_SUCCESS,
+    GET_LOG_COUNT_BY_DATE_FAIL
 
 } from '../constants/ProjectConstants'
 
@@ -67,6 +75,46 @@ export const createNewProjectReducer = (state={} ,  action)=>{
                 data: action.payload
             }
         case UPLOAD_NEW_PROJECT_REQUEST_FAIL:
+            return {
+                loading:false,
+                error:action.payload
+            }
+        default:
+            return state;
+    }
+}
+
+export const getLogCountsReducer = (state={} ,  action)=>{
+    switch (action.type) {
+        case GET_LOG_COUNT_REQUEST:
+            return {loading:true}
+
+        case GET_LOG_COUNT_SUCCESS:
+            return {
+                loading:false,
+                data: action.payload
+            }
+        case GET_LOG_COUNT_FAIL:
+            return {
+                loading:false,
+                error:action.payload
+            }
+        default:
+            return state;
+    }
+}
+
+export const getLogCountsByDateReducer = (state={} ,  action)=>{
+    switch (action.type) {
+        case GET_LOG_COUNT_BY_DATE_REQUEST:
+            return {loading:true}
+
+        case GET_LOG_COUNT_BY_DATE_SUCCESS:
+            return {
+                loading:false,
+                data: action.payload
+            }
+        case GET_LOG_COUNT_BY_DATE_FAIL:
             return {
                 loading:false,
                 error:action.payload

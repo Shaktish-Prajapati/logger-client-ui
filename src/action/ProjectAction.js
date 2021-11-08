@@ -10,7 +10,15 @@ import {
 
     UPLOAD_NEW_PROJECT_REQUEST,
     UPLOAD_NEW_PROJECT_REQUEST_SUCCESS,
-    UPLOAD_NEW_PROJECT_REQUEST_FAIL
+    UPLOAD_NEW_PROJECT_REQUEST_FAIL,
+
+    GET_LOG_COUNT_REQUEST,
+    GET_LOG_COUNT_SUCCESS,
+    GET_LOG_COUNT_FAIL,
+
+    GET_LOG_COUNT_BY_DATE_REQUEST,
+    GET_LOG_COUNT_BY_DATE_SUCCESS,
+    GET_LOG_COUNT_BY_DATE_FAIL
 } from '../constants/ProjectConstants'
 
 export const getAllProject = () => async (dispatch)=>{
@@ -50,7 +58,7 @@ export const getAllProject = () => async (dispatch)=>{
     }
 }
 
-export const getProjectByCode = (code)=>async(dispatch)=>{
+export const getProjectByCode = (code,date=null,filters=null)=>async(dispatch)=>{
     try {
     dispatch({type:GET_ALL_LOG_BY_CODE_REQUEST})
     const token = localStorage.getItem("ddAdminToken")
@@ -61,19 +69,62 @@ export const getProjectByCode = (code)=>async(dispatch)=>{
             },
         }
 
-        console.log(config)
+        console.log(filters)
 
         // const {data} = await axios.get('https://agvalogger.herokuapp.com/api/logger/projects/',
         // config
         // )
 
-        const {data} = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}`,
+        // /api/logger/projects/getDetail/MF7OW?startDate=2021-09-20&endDate=2021-10-04
+        let response;
+        if (date!=null  && date.start && date.end) {
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?startDate=${date.start}&endDate=${date.end}`,
         config
         )
-        console.log(data)
+        }
+        else if (date!=null && date.start) {
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?startDate=${date.start}`,
+        config
+        )
+        }
+        else if (date!=null && date.end) {
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?endDate=${date.end}`,
+        config
+        )
+        }
+        else if(filters!=null){
+            let logString = ''
+            console.log(filters)
+            // for (let index = 0; index < filters.length; index++) {
+            //     if (filters[index].values) {
+            //         logString+=`${filters.key}-`
+            //     } else {
+            //         continue;
+            //     }  
+            // }
+            for (const [key, value] of Object.entries(filters)) {
+                if (value) {
+                    
+                    logString+=`${key}-`
+                }
+                // console.log(`${key}: ${value}`);
+              }
+            console.log(logString)
+            
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?logType=${logString}`,
+        config
+        )
+        console.log(response)
+        }
+        else{
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}`,
+            config
+            )
+        }
+        console.log(response.data)
         dispatch({
             type: GET_ALL_LOG_BY_CODE_SUCCESS, 
-            payload:data
+            payload:response.data
         })
 
     } catch (error) {
@@ -121,6 +172,108 @@ export const uploadNewProject = (name, modelList, desc)=>async(dispatch)=>{
         console.log(error.response)
         dispatch({
             type: UPLOAD_NEW_PROJECT_REQUEST_FAIL,
+            payload:
+            error.response && error.response.data.message 
+            ? error.response.data.message : error.message,
+        })
+    }
+}
+
+
+export const getLogTypeCounts = (code)=>async(dispatch)=>{
+    try {
+        dispatch({type:GET_LOG_COUNT_REQUEST})
+        
+        const token = localStorage.getItem("ddAdminToken")
+            const config = {
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+            }
+    
+            console.log(config)
+    
+            // const {data} = await axios.get('https://agvalogger.herokuapp.com/api/logger/projects/',
+            // config
+            // )
+    
+            const {data} = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getLogsCount/${code}`,
+            config
+            )
+            console.log(data)
+            dispatch({
+                type: GET_LOG_COUNT_SUCCESS, 
+                payload:data
+            })
+    } catch (error) {
+        console.log(error.response)
+        dispatch({
+            type: GET_LOG_COUNT_FAIL,
+            payload:
+            error.response && error.response.data.message 
+            ? error.response.data.message : error.message,
+        })
+    }
+}
+
+
+export const getLogByDate = (code,date=null)=>async(dispatch)=>{
+    try {
+    dispatch({type:GET_LOG_COUNT_BY_DATE_REQUEST})
+    const token = localStorage.getItem("ddAdminToken")
+        const config = {
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+        }
+
+        console.log("hello from action by date")
+        console.log(date)
+
+        // const {data} = await axios.get('https://agvalogger.herokuapp.com/api/logger/projects/',
+        // config
+        // )
+
+        // /api/logger/projects/getDetail/MF7OW?startDate=2021-09-20&endDate=2021-10-04
+        let response;
+        if (date!=null  && date.start && date.end) {
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/datewiselogcount/${code}?startDate=${date.start}&endDate=${date.end}`,
+        config
+        )
+        }
+        else if (date!=null && date.start) {
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/datewiselogcount/${code}?startDate=${date.start}`,
+        config
+        )
+        }
+        else if (date!=null && date.end) {
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/datewiselogcount/${code}?endDate=${date.end}`,
+        config
+        )
+        }
+        else{
+            console.log("hello else")
+            var dt = new Date();
+            const start=dt.toISOString().slice(0, 10)
+            dt.setDate(dt.getDate() - 30)
+            const end=dt.toISOString().slice(0, 10)
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/datewiselogcount/${code}?startDate=2021-09-20&endDate=2021-10-04`,
+            config
+            )
+            console.log(response)
+        }
+        console.log(response.data)
+        dispatch({
+            type: GET_LOG_COUNT_BY_DATE_SUCCESS, 
+            payload:response.data
+        })
+
+    } catch (error) {
+        console.log(error.response)
+        dispatch({
+            type: GET_LOG_COUNT_BY_DATE_FAIL,
             payload:
             error.response && error.response.data.message 
             ? error.response.data.message : error.message,

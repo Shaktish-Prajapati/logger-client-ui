@@ -14,7 +14,9 @@ import {
 import {
     getAllProjectReducer,
     getAllLogByCodeReducer,
-    createNewProjectReducer
+    createNewProjectReducer,
+    getLogCountsReducer,
+    getLogCountsByDateReducer
 } from './reducers/ProjectReducer'
 
 
@@ -34,7 +36,10 @@ const appReducer = combineReducers({
     
     getAllProjectReducer,
     getAllLogByCodeReducer,
-    createNewProjectReducer
+    createNewProjectReducer,
+    getLogCountsReducer,
+    getLogCountsByDateReducer
+
 })
 
 const persistConf = {
@@ -43,6 +48,7 @@ const persistConf = {
 }
 
 const rootReducer = (state, action) => {
+    console.log('root reducer')
     if (action.type === ADMIN_LOGOUT) {
         // for all keys defined in your persistConfig(s)
         storage.removeItem('persist:root')

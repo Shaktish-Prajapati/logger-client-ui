@@ -10,7 +10,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faWrench, faCopy, faSignOutAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 import './Navbarr.css';
 import { IconContext } from 'react-icons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { adminLogout } from '../action/AdminAction';
+import { useHistory } from 'react-router';
 
 
 const Navbarr = (props) => {
@@ -21,7 +23,15 @@ const Navbarr = (props) => {
     // const secondLetter = props.navbardetails.name.split(" ")[1].charAt(0).toUpperCase()
 
   const showSidebar = () => setSidebar(!sidebar);
+  const dispatch = useDispatch()
+  let history = useHistory()
+  const handlelogout = (e)=>{
+      e.preventDefault()
+        dispatch(adminLogout(history))
+  }
 
+  const currentRoute = useHistory().location.pathname.toLowerCase();
+  console.log(currentRoute)
   return (
     <>
       <IconContext.Provider value={{ color: '#1a83ff' }}>
@@ -30,17 +40,18 @@ const Navbarr = (props) => {
             <FaIcons.FaBars onClick={showSidebar} />
           </Link> */}
           <h2 className='titleNavbar' style={{color:'#1a83ff'}} >{props.navbardetails.dashName}</h2>
-          <h4 className='logoutNavbar' style={{color:'#1a83ff'}}><FontAwesomeIcon icon={faSignOutAlt}  />Logout</h4>
+          <div onClick={e=>{handlelogout(e)}} className='logoutNavbar' style={{color:'#1a83ff'}}> <FontAwesomeIcon icon={faSignOutAlt} />Logout</div>
         </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+        {/* <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}> */}
+        <nav className='nav-menu'>
         {/* <nav className='nav-menu active'> */}
-          <ul className='nav-menu-items' onClick={showSidebar}>
+          <ul style={{padding:'0%'}} /* className='nav-menu-items' */ onClick={showSidebar}>
             {/* <li className='navbar-toggle'>
               <Link to='#' className='menu-bars' style={{float:'left'}}>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li> */}
-            <Link>
+            <Link to='/' style={{cursor:'hide'}}>
             <div className="sidebar_avatar">
                 <div className="sidebar_avatar__letters">
                    {/* { `${firstLetter}${secondLetter}`} */}
@@ -50,15 +61,17 @@ const Navbarr = (props) => {
                 </div>
             </div>
             
-            <p className='name-email'> {props.navbardetails.name} </p>
-            <p className='name-email'></p>
+            <p className='name-email' 
+            > {props.navbardetails.name} </p>
+            <p className='name-email'>saman@gmail.com</p>
             </Link>
             {/* <Link className="nav-text"><AiIcons.AiFillHome style={{marginRight:'8px'}} />Home</Link> */}
             {
               console.log(props.navbardetails.link1.iconName)
             }
-            <Link className="nav-text"><FontAwesomeIcon style={{marginRight:'8px'}} icon={props.navbardetails.link1.iconName}/>{/* <AiIcons.AiFillHome style={{marginRight:'8px'}} /> */}{props.navbardetails.link1.linkName}</Link>
-            <Link className="nav-text"><FontAwesomeIcon style={{marginRight:'8px'}} icon={props.navbardetails.link2.iconName}/> {props.navbardetails.link2.linkName} </Link>
+            <Link to={props.navbardetails.link1 && props.navbardetails.link1.link && props.navbardetails.link1.link.length ==0 ? '' :props.navbardetails.link1.link}  className={currentRoute.includes("home") || currentRoute.includes("newlogtable") ? "nav-text active" : "nav-text"}
+            ><FontAwesomeIcon style={{marginRight:'8px'}} icon={props.navbardetails.link1.iconName}/>{/* <AiIcons.AiFillHome style={{marginRight:'8px'}} /> */}{props.navbardetails.link1.linkName}</Link>
+            <Link to={props.navbardetails.link2 && props.navbardetails.link2.link && props.navbardetails.link2.link.length ==0 ? '' :props.navbardetails.link2.link} className="nav-text"><FontAwesomeIcon style={{marginRight:'8px'}} icon={props.navbardetails.link2.iconName}/> {props.navbardetails.link2.linkName} </Link>
             {/* {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
