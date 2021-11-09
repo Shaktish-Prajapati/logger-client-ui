@@ -23,7 +23,7 @@ const Home = () => {
 
     const navbardetail = {
         name: adminInfo.data.name,
-        dashName:'Welcome',
+        dashName:'Welcome to Logger',
         link1:{
             iconName:faHome,
             linkName:'Home',
