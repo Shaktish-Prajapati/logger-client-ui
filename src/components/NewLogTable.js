@@ -73,6 +73,14 @@ function priceFormatter(cell, row) {
       },
 
     {
+        dataField: 'logGeneratedDate',
+        text: 'Log Generated Time',
+      //   filter: textFilter(),
+        formatter: cell => cell.split("T")[1],
+        sort:true
+      },
+
+    {
       dataField: 'device_types',
       text: 'Device Code',
       formatter: cell => cell.split("|")[0],
