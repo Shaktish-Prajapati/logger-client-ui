@@ -58,8 +58,9 @@ export const getAllProject = () => async (dispatch)=>{
     }
 }
 
-export const getProjectByCode = (code,date=null,filters=null)=>async(dispatch)=>{
+export const getProjectByCode = (code,date=null,filters=null,page=null,record=10)=>async(dispatch)=>{
     try {
+        console.log(`pageno from action project ${page}`)
     dispatch({type:GET_ALL_LOG_BY_CODE_REQUEST})
     const token = localStorage.getItem("ddAdminToken")
         const config = {
@@ -78,48 +79,41 @@ export const getProjectByCode = (code,date=null,filters=null)=>async(dispatch)=>
         // /api/logger/projects/getDetail/MF7OW?startDate=2021-09-20&endDate=2021-10-04
         let response;
         if (date!=null  && date.start && date.end) {
-            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?startDate=${date.start}&endDate=${date.end}`,
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?startDate=${date.start}&endDate=${date.end}&limit=${record}`,
         config
         )
         }
         else if (date!=null && date.start) {
-            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?startDate=${date.start}`,
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?startDate=${date.start}&limit=${record}`,
         config
         )
         }
         else if (date!=null && date.end) {
-            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?endDate=${date.end}`,
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?endDate=${date.end}&limit=${record}`,
         config
         )
         }
         else if(filters!=null){
             let logString = ''
-            console.log(filters)
-            // for (let index = 0; index < filters.length; index++) {
-            //     if (filters[index].values) {
-            //         logString+=`${filters.key}-`
-            //     } else {
-            //         continue;
-            //     }  
-            // }
             for (const [key, value] of Object.entries(filters)) {
                 if (value) {
                     
                     logString+=`${key}-`
                 }
-                // console.log(`${key}: ${value}`);
               }
             console.log(logString)
             
-            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?logType=${logString}`,
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?logType=${logString}&page=${page}&limit=${record}`,
         config
         )
         console.log(response)
         }
         else{
-            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}`,
+            console.log(`pageno from action project ${page}`)
+            response = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getDetail/${code}?page=${page}&limit=${record}`,
             config
             )
+
         }
         console.log(response.data)
         dispatch({
@@ -193,10 +187,6 @@ export const getLogTypeCounts = (code)=>async(dispatch)=>{
             }
     
             console.log(config)
-    
-            // const {data} = await axios.get('https://agvalogger.herokuapp.com/api/logger/projects/',
-            // config
-            // )
     
             const {data} = await axios.get(`https://logger-server.herokuapp.com/api/logger/projects/getLogsCount/${code}`,
             config

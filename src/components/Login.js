@@ -120,7 +120,7 @@ const Login = () => {
     //     }
     // }, [])
     return (
-        <div className='Login-card justify-content-center'>
+        <div data-testid='login-test' className='Login-card justify-content-center'>
             <div className='Login-title'>
                <p className='className="d-flex justify-content-center' style={{fontSize:'3rem'}} >Login</p>
             </div>

@@ -14,13 +14,16 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import * as IoIcons from 'react-icons/io'
 import * as jQuery from 'jquery';
+import ReactPaginate from 'react-paginate';
+import Dropdown from '@restart/ui/esm/Dropdown';
+import {DropdownButton} from 'react-bootstrap'
 
 const { SearchBar } = Search;
 
 
 
 
-function priceFormatter(cell, row) {
+function errorFormatter(cell, row) {
     if (row.logType) {
       return (
         <span>
@@ -61,7 +64,7 @@ function priceFormatter(cell, row) {
       dataField: 'logType',
       text: 'Log Type',
     //   filter: textFilter(),
-      formatter: priceFormatter,
+      formatter: errorFormatter,
       sort:true
     },
     {
@@ -106,9 +109,13 @@ const NewLogTable = () => {
       error:false,
       info:false,
       warn:false,
-      debug:false
+      debug:false,
+      verbose:false
     })
     const [debug,setDebug] = useState("false")
+    const [pageNo, setPageNo] = useState(0);
+    const [record, setRecords] = useState(25);
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get('code')
@@ -124,7 +131,8 @@ const NewLogTable = () => {
         error:false,
         info:false,
         warn:false,
-        debug:false
+        debug:false,
+        verbose:false
       })
         dispatch(getProjectByCode(code))
     }
@@ -139,22 +147,29 @@ const NewLogTable = () => {
 
     const resetFilter=()=>{
       setDate('')
+      setPageNo(0)
       setLogType({
         error:false,
         info:false,
         warn:false,
-        debug:false
+        debug:false,
+        verbose:false
       })
-      setLogType({...logType})
-      dispatch(getProjectByCode(code))
+      // setLogType({...logType})
+      dispatch(getProjectByCode(code,record))
 
     }
+    const handlePageClick = (data)=>{
+      if (pageNo !== data.selected) {
+          setPageNo(data.selected)
+      }
+  }
 
-    useEffect(() => {
-      console.log("useEffect")
-      // setLogType({...logType})
-        dispatch(getProjectByCode(code))
-    }, [])
+    // useEffect(() => {
+    //     dispatch(getProjectByCode(code))
+    // }, [])
+
+    console.log("page no"+pageNo)
 
     const navbardetail = {
         name: projectName,
@@ -171,15 +186,40 @@ const NewLogTable = () => {
         }
   
     }
-    console.log(logType)
+    
     useEffect(() => {
-      dispatch(getProjectByCode(code,null,logType))
+      console.log("inside the logtype useEffect")
+      if (logType.error|| logType.info || logType.warn || logType.debug || logType.verbose) {
+          dispatch(getProjectByCode(code,null,logType,pageNo,record))
+      } else {
+        setPageNo(0)
+        dispatch(getProjectByCode(code,null,null,pageNo,record))
+      }
     }, [logType]);
+
+    useEffect(() => {
+      if (logType.error|| logType.info || logType.warn || logType.debug || logType.verbose) {
+        dispatch(getProjectByCode(code,null,logType,pageNo,record))
+      }else {
+        dispatch(getProjectByCode(code,null,null,pageNo,record))
+      }
+    }, [pageNo,record]);
 
     var expanded = false;
 
 function showCheckboxes() {
   var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}
+
+function showPagesRecord() {
+  var checkboxes = document.getElementById("pagesRecord");
   if (!expanded) {
     checkboxes.style.display = "block";
     expanded = true;
@@ -252,11 +292,11 @@ function showCheckboxes() {
                                 <div id="checkboxes" style={{borderColor:'#3E8BE2', background:'none',borderRadius:'5px'}}>
                                   <label for="debug" style={{color:'#3E8BE2'}} >
                                     <input type="checkbox" style={{color:'#3E8BE2'}} id="debug" checked={logType.debug} onClick={e=>{setLogType({...logType,debug:!logType.debug})}} />Debug</label>
-                                  <label for="warn">
+                                  <label for="warn" style={{color:'#3E8BE2'}} >
                                     <input type="checkbox" id="warn" checked={logType.warn} onClick={e=>{setLogType({...logType,warn:!logType.warn})}} />Warn</label>
-                                  <label for="info">
+                                  <label for="info" style={{color:'#3E8BE2'}} >
                                     <input type="checkbox" id="info" checked={logType.info} onClick={e=>{setLogType({...logType,info:!logType.info})}} />Info</label>
-                                  <label for="error">
+                                  <label for="error" style={{color:'#3E8BE2'}} >
                                     <input type="checkbox" id="error" checked={logType.error} onClick={e=>{setLogType({...logType,error:!logType.error})}} />Error</label>
                                 </div>
                               </div>
@@ -268,19 +308,62 @@ function showCheckboxes() {
                               <div class="col">
                               <button type="button" onClick={resetFilter} style={{background:'#3E8BE2',fontWeight:'bold',float:'left',verticalAlign:'center', marginTop:'12%'}} className="btn btn-primary">Reset Filter</button>
                               </div>
+                              <div class='col'>
+                              <div class="multiselect">
+                                <div class="selectBox" style={{borderColor:'#3E8BE2'}} onClick={showPagesRecord}>
+                                  <select style={{borderColor:'#3E8BE2', background:'none', color:'#3E8BE2', marginTop:'12%', borderRadius:'5px',height:'35px'}}  >
+                                    <option>Record Per Page</option>
+                                  </select>
+                                  <div class="overSelect"></div>
+                                </div>
+                                <div id="PagesRecord" style={{borderColor:'#3E8BE2', background:'none',borderRadius:'5px'}}>
+                                  <label for="10" style={{color:'#3E8BE2'}} >
+                                    <input type="checkbox" style={{color:'#3E8BE2'}} id="10" checked={record === 10} onClick={e=>{setRecords(10)}} />10</label>
+                                  <label for="25" style={{color:'#3E8BE2'}} >
+                                    <input type="checkbox" id="25" checked={record === 25}  onClick={e=>{setRecords(25)}} />25</label>
+                                  <label for="50" style={{color:'#3E8BE2'}} >
+                                    <input type="checkbox" id="50" checked={record === 50}  onClick={e=>{setRecords(50)}} />50</label>
+                                  <label for="100" style={{color:'#3E8BE2'}} >
+                                    <input type="checkbox" id="100" checked={record === 100} onClick={e=>{setRecords(100)}} />100</label>
+                                </div>
+                              </div>
+                              </div>
                               
                             </div>
                             <BootstrapTable
                             { ...props.baseProps }
                             noDataIndication="No data found" 
-                            pagination={ paginationFactory() }
+                            // pagination={ paginationFactory({
+                            //   // custom: true,
+                            //   sizePerPage:25,
+                            //   totalSize: data.data.logs.length
+                            // }) 
+                          // }
                             />
                         </div>
                         )
                     }
                     </ToolkitProvider>
                       : <h2 style={{color:'#212925', alignItems:'center'}}>No Log Available</h2>
-                    }</>
+
+                    }
+                    <ReactPaginate
+                      breakLabel="..."
+                      nextLabel="Next >"
+                      onPageChange={handlePageClick}
+                      pageRangeDisplayed={5}
+                      pageCount={data&& data.data&&data.data.count/record}
+                      // previousLabel="< Previous"
+                      renderOnZeroPageCount={null}
+                      containerClassName={"pagination"}
+                      pageClassName={"page-item"}
+                      pageLinkClassName={"page-link"}
+                      previousClassName={"page-item"}
+                      nextClassName={"page-item"}
+                      previousLinkClassName={"page-link"}
+                      nextLinkClassName={'page-link'}
+                    />
+                    </>
                   }
                   </div>
 
