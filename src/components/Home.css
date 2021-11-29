@@ -25,6 +25,13 @@
     justify-content: center;
 }
 
+.centerAddButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .projectCard {
     left: 0% !important;
     /* display: block !important; */
@@ -43,11 +50,13 @@
   height: 60px;
   overflow: hidden;
   /* border-radius: 50%; */
+
   background-color: #1a83ff;
   box-shadow: 01px 1px 15px rgb(184, 182, 182);
   color: #fff;
-  margin: 15% 22% 2% 22%;
+  /* margin: 15% 22% 2% 22%; */
   }
+
   .plusSign {
     font-size: large;
     font-family: 'Courier New', Courier, monospace;

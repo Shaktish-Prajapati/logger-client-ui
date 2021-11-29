@@ -60,28 +60,20 @@ const Home = () => {
                 
                 <Col sm={4} >
                     <Card className="addProjectButton">
-                    <Card.Body /* className="addProjectButton" */>
+                    <Card.Body style={{ display: "flex",justifyContent: "center",alignItems: "center"}}>
                         
                         <Card.Text>
-                        {/* <div class="dot">+</div> */}
-                        {/* <div class="card">  */}
-                            <Button style={{borderRadius:'100%', backgroundColor:'#1a83ff'}} className="homedot btn btn-secondary " onClick={(e)=>{setModal(true)}} > 
-                                {/* <img src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-1100x628.jpg" alt="user-image"/> */}
-                                {/* <div className="plusSign"  >+</div> */}
+                        <div className="centerAddButton">
+                            <Button style={{borderRadius:'100%', backgroundColor:'#1a83ff'}} className="homedot btn btn-secondary m-2" onClick={(e)=>{setModal(true)}} > 
                                 <FontAwesomeIcon icon={faPlus}/>
                             </Button>
+                        </div>
                             <p style={{fontWeight:'bold', color:'#1a83ff'}}>Add Project</p>
                             <AddProjectModal
                             show = {modal}
                             onHide = {() => setModal(false)}
                             closemodal = {closeModal}
                             />
-
-                            {/* <div class="card_info"> 
-                                <h2>USER NAME</h2>
-                                <a href="#!">loremIpsum.com</a>
-                            </div> */}
-                        {/* </div> */}
                        
                         </Card.Text>
                     </Card.Body>
