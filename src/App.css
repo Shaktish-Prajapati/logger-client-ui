@@ -3,6 +3,9 @@
   padding: 0%;
   box-sizing: border-box;
 }
+body{
+  /* overflow-y: hidden; */
+}
 
 
 .App {
@@ -15,6 +18,7 @@
   /* opacity: 1; */
   /* overflow-y: hidden; */
 }
+
 
 
 ul{

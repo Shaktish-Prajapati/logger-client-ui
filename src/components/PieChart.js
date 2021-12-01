@@ -153,8 +153,8 @@ function PieCharts() {
     
         <Card className="analyticsPieChart">
                     {/* <Card.Body className="addProjectButton"> */}
-                    <ResponsiveContainer width={'90%'} height={300}>                        
-                        <PieChart width={300} height={300} float='left'>
+                    <ResponsiveContainer width={'90%'} height={400}>                        
+                        <PieChart width={500} height={500} float='left'>
                             {console.log( piCount)}
                             <Pie
                                 data={piCount}

@@ -234,7 +234,7 @@ function showPagesRecord() {
             <Navbarr navbardetails = {navbardetail}  />
             {/* <ProjectSideBar /> */}
             {/* <div style={{paddingTop:'1%'}}> */}
-            <div style={{margin:'1%', width:'85%', float:'right'}}>
+            <div style={{marginTop:'6%', width:'85%', float:'right'}}>
             <IoIcons.IoIosRefreshCircle onClick={refreshButton} className='refreshButton' />
               {
                 loading ? <SpinLoader /> :<>
@@ -263,7 +263,7 @@ function showPagesRecord() {
                     >
                     {
                         props => (
-                        <div>
+                        <div style={{}}>
                             <SearchBar style={{width:'30%', display:'block'}} { ...props.searchProps } placeholder="Enter filter..." />
                             
                             <div class="row">

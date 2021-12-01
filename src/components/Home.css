@@ -2,7 +2,7 @@
     /* border: none; */
     /* border-radius: 50%; */
     width: 20rem;
-    height: 15rem;
+    /* height: 15rem; */
     /* margin:15%; */
     /* margin-bottom: 50px; */
     box-shadow: 2px 2px 10px grey;
@@ -73,7 +73,9 @@
   .homeCards {
     height: 92vh;
     margin-left:15%;
-    padding:2% 10% 2% 10%;
+    /* padding:2% 10% 2% 10%; */
+    padding: 2%;
+    /* margin-top: 7%; */
     overflow: auto
   }
 

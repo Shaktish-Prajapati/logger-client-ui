@@ -9,6 +9,7 @@ import {Col,Card, Row, Dropdown,DropdownButton} from 'react-bootstrap'
 import PieCharts from './PieChart';
 import LineGraphs from './LineGraphs';
 import { multiSelectFilter } from 'react-bootstrap-table2-filter';
+import DonutChart from './DonutChart';
 
 function Analytics() {
 
@@ -62,7 +63,7 @@ function Analytics() {
     return (
       <>
       <Navbarr navbardetails = {navbardetail}  />
-        <div style={{ width:'85%', float:'right'}}>
+        <div style={{ width:'85%', float:'right', paddingTop:'50px'}}>
           <Row> 
             <Col sm={4} >
               <PieCharts />
@@ -71,7 +72,8 @@ function Analytics() {
                     <PieCharts />
                 </Col>
                 <Col sm={4} >
-                  <PieCharts />
+                  {/* <PieCharts /> */}
+                  <DonutChart />
                 </Col>
                 </Row>
                 <Row style={{marginTop:'2%',marginBottom:'2%'}} >
