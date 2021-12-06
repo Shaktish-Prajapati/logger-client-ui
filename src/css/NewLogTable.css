@@ -164,3 +164,11 @@ ul.pagination li {
   display: flex !important;
   align-items: bottom !important;
 }
+
+
+/* todo: neeraj 05-12-2021 if date data is empty in both end and start */
+.dateempty {
+
+  border: red 2px solid !important;
+  transition-duration: .5s;
+}

@@ -218,7 +218,7 @@ const Login = () => {
             </Col>
             <Col /* style={{paddingRight:'0px'}} */>
               <Link
-                to="/"
+                to="/forgetPassword"
                 style={{
                   paddingRight: "0px",
                   marginRight: "0px",

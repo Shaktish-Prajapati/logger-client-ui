@@ -129,6 +129,11 @@ const NewLogTable = () => {
   const [pageNo, setPageNo] = useState(0);
   const [record, setRecords] = useState(25);
 
+  // todo : 1:1 empty date state
+  const [emptyDate, setEmptyDate] = useState(false);
+
+  // 2) dropdown refresh with drop down button click
+
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get("code");
@@ -152,9 +157,20 @@ const NewLogTable = () => {
     dispatch(getProjectByCode(code));
   };
 
+  // todo: neeraj 6-12-2021 3:33
+  // 1)check if data field are not empty
   const filterOnDate = () => {
+    if (!date.start && !date.end) {
+      setEmptyDate(true);
+      return;
+    }
+
     dispatch(getProjectByCode(code, date));
+    setEmptyDate(false);
   };
+
+  // const dataValidatin = () => {};
+
   const filterOnLogType = () => {
     console.log(logType);
     // dispatch(getProjectByCode(code,null,logType))
@@ -322,9 +338,16 @@ const NewLogTable = () => {
                                   type="date"
                                   value={date.start}
                                   onChange={(e) =>
-                                    setDate({ ...date, start: e.target.value })
+                                    setDate({
+                                      ...date,
+                                      start: e.target.value,
+                                    })
                                   }
-                                  className="form-control"
+                                  className={
+                                    emptyDate
+                                      ? "dateempty form-control"
+                                      : "form-control"
+                                  }
                                   style={{
                                     color: "#3E8BE2",
                                     fontWeight: "bold",
@@ -349,7 +372,11 @@ const NewLogTable = () => {
                                   onChange={(e) =>
                                     setDate({ ...date, end: e.target.value })
                                   }
-                                  className="form-control"
+                                  className={
+                                    emptyDate
+                                      ? "dateempty form-control"
+                                      : "form-control"
+                                  }
                                   style={{
                                     color: "#3E8BE2",
                                     fontWeight: "bold",
