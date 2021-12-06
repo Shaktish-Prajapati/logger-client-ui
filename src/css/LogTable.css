@@ -1,0 +1,21 @@
+.table-style {
+  border: 10px solid red !important;
+}
+
+ul.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 6px;
+  text-decoration: none;
+}
+
+ul.pagination li.active {
+  background-color: #3E8BE2;
+  border-radius: 5px;
+  color: white;
+}
+
+ul.pagination li:hover:not(.active) {
+  background-color: #c4dcf8;
+  border-radius: 5px;
+}

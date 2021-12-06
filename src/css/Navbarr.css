@@ -1,0 +1,185 @@
+.navbarr {
+  background-color: #FFFFFF;
+  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0%;
+  z-index: 5;
+  width: 85%;
+  float: right;
+  z-index: 3;
+  margin-left: 15%;
+  box-shadow: 1px 1px 10px rgb(197, 197, 197);
+}
+
+.menu-bars {
+  margin-left: 2%;
+  font-size: 2%;
+  /* background: none; */
+}
+
+.nav-menu {
+  background-color: #FFFFFF;
+  width: 15%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  box-shadow: 1px 1px 10px rgb(197, 197, 197);
+  position: fixed;
+  top: 0;
+  /* left: -100%; */
+  z-index: 4;
+  margin-left: 0% !important;
+  /* transition: 850ms; */
+}
+
+.nav-menu ul {
+  width: 100%;
+}
+
+.nav-menu.active {
+  left: 0;
+  color: red;
+  transition: 350ms;
+}
+
+.nav-link-outer-sec {
+  text-align: center;
+}
+
+
+.nav-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 4% 0% 4% 0%;
+  margin-left: -2px;
+  list-style: none;
+  font-size: 100%;
+  color: black;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 10%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16%;
+  border-radius: 4%;
+}
+
+/* .nav-text a:hover */
+.nav-text:hover {
+  background-color: #94c0f1;
+  color: #fff;
+  text-decoration: none;
+  transition-duration: .5s;
+}
+
+
+.nav-menu-items {
+
+  align-items: center;
+  list-style: none;
+  display: block;
+  width: 100%;
+}
+
+.titleNavbar {
+  margin-left: 4%;
+  float: left !important;
+
+}
+
+.logoutNavbar {
+  margin-right: 2%;
+  margin-left: 78%;
+  cursor: pointer;
+}
+
+
+.navbar-toggle {
+  background-color: #FFFFFF;
+  color: #1a83ff;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+span {
+  margin-left: 16px;
+}
+
+
+.sidebar_avatar {
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgb(189, 183, 183);
+
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Used to position the content */
+  text-decoration: none;
+
+
+  /* Colors */
+  background-color: #1a83ff;
+  color: #1a83ff;
+
+  /* Rounded border */
+  border-radius: 100%;
+
+
+}
+
+.active {
+  background-color: #489dff;
+  color: #fff;
+}
+
+
+.name-avatar {
+  margin-left: 0%;
+  float: left;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  overflow: hidden;
+  pointer-events: none;
+  color: black;
+  /* font-size: 1rem; */
+
+}
+
+.name-email {
+  margin-left: 0%;
+  float: left;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  overflow: hidden;
+  pointer-events: none;
+  font-size: .8rem;
+
+}
+
+.sidebar_avatar__letters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  pointer-events: none;
+}
