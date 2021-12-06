@@ -1,11 +1,14 @@
+@import "./variables.css";
+
 .Login-card {
-   justify-content: center;
+
+    justify-content: center;
     width: 30%;
     /* height: 85vh; */
     margin-left: 35%;
     margin-top: 3.5%;
     align-items: center;
-    background: #FFFFFF 0% 0% no-repeat;
+    background: var(--primaryColor) 0% 0% no-repeat;
     box-shadow: 0px 0px 30px #3E8BE21A;
     border: 0.20000000298023224px solid #3E8BE21A;
     border-radius: 20px;
@@ -17,10 +20,10 @@
     /* width: 534px; */
     /* height: 155px; */
     opacity: 1;
-    
+
 }
 
-.Login-title > p {
+.Login-title>p {
     padding-top: 5%;
     /* position: absolute; */
     top: 50%;
@@ -40,7 +43,7 @@
     margin: 10%;
 }
 
-.icon-left  {
+.icon-left {
     float: left;
     margin-left: 8px;
     margin-top: -27px;
@@ -65,7 +68,7 @@
     border-radius: 10px !important;
     opacity: 1;
     border: 1px solid #3E8BE2 !important;
- }
+}
 
 
 .Login-button {
@@ -84,9 +87,11 @@
         width: auto;
         margin-left: auto;
     }
+
     .login-form {
-        width:100%
+        width: 100%
     }
+
     .login-card {
         height: auto;
     }

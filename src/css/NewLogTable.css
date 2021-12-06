@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 .react-bootstrap-table thead {
   /* position: sticky;  */
   /* top: 0;  */
@@ -21,7 +23,7 @@ td {
 
 th {
   background-color: #3e8be2;
-  color: #fff;
+  color: var(--primaryColor);
 }
 
 table tr:last-child td:last-child {
@@ -53,7 +55,7 @@ table tr:last-child td:last-child {
   margin-bottom: 3%;
   border-color: none;
   border-width: 0ch;
-  color: #fff;
+  color: var(--primaryColor);
   background: #bbbbbb 0% 0% no-repeat padding-box;
 }
 

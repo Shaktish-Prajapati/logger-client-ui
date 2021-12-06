@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 .lds-roller {
   position: absolute;
   top: 50%;

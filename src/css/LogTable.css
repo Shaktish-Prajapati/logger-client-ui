@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 .table-style {
   border: 10px solid red !important;
 }
@@ -12,7 +14,7 @@ ul.pagination li {
 ul.pagination li.active {
   background-color: #3E8BE2;
   border-radius: 5px;
-  color: white;
+  color:  var(--primaryColor);
 }
 
 ul.pagination li:hover:not(.active) {

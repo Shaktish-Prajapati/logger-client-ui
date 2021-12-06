@@ -35,7 +35,7 @@
     /* justify-content: center; */
 }
 
-
+@import "./variables.css";
 .analyticsSmallButton {
     border-radius: 10px;
     width: 90% !important;
