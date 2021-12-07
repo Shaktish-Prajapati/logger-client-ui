@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbarr from "./Navbarr";
 // import ProjectSideBar from './ProjectSideBar'
 import "../css/NewLogTable.css";
@@ -129,8 +129,12 @@ const NewLogTable = () => {
   const [pageNo, setPageNo] = useState(0);
   const [record, setRecords] = useState(25);
 
-  // todo : 1:1 empty date state
+  // todo : 1:1 neeraj empty date state
   const [emptyDate, setEmptyDate] = useState(false);
+
+  // todo : 1:2 neeraj useref for refresh button click
+  const startDateRef = useRef(null);
+  const endDatRef = useRef(null);
 
   // 2) dropdown refresh with drop down button click
 
@@ -146,7 +150,10 @@ const NewLogTable = () => {
   console.log(code);
 
   const refreshButton = () => {
-    setDate("");
+    setDate({
+      start: "",
+      end: "",
+    });
 
     setLogType({
       error: false,
@@ -158,7 +165,7 @@ const NewLogTable = () => {
     dispatch(getProjectByCode(code));
   };
 
-  // todo: neeraj 6-12-2021 3:33
+  // todo: 1:1 neeraj 6-12-2021 3:33
   // 1)check if data field are not empty
   const filterOnDate = () => {
     if (!date.start && !date.end) {
@@ -178,6 +185,10 @@ const NewLogTable = () => {
   };
 
   const resetFilter = () => {
+    // todo 1:2 useing ref to change inputs values
+    startDateRef.current.value = "";
+    endDatRef.current.value = "";
+
     setDate("");
     setEmptyDate(false);
     setPageNo(0);
@@ -280,7 +291,11 @@ const NewLogTable = () => {
 
       <Container className="mt-5">
         <Container
-          style={{ marginLeft: "125px", width: "100%", marginTop: "120px" }}
+          style={{
+            marginLeft: "160px",
+            width: "88%",
+            marginTop: "120px",
+          }}
         >
           <Row className="text-center">
             <Col>
@@ -315,6 +330,8 @@ const NewLogTable = () => {
                       <input
                         type="date"
                         value={date.start}
+                        // using ref for chaning state with refresh button clicked
+                        ref={startDateRef}
                         onChange={(e) =>
                           setDate({
                             ...date,
@@ -345,6 +362,8 @@ const NewLogTable = () => {
                         type="date"
                         max={Date.now()}
                         value={date.end}
+                        // using ref for chaning state with refresh button clicked
+                        ref={endDatRef}
                         onChange={(e) =>
                           setDate({ ...date, end: e.target.value })
                         }
