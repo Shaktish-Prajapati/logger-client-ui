@@ -69,7 +69,7 @@ const Home = () => {
           <Row style={{ marginLeft: "120px", marginTop: "120px" }}>
             {adminInfo.data && adminInfo.data.isSuperAdmin ? (
               <Col>
-                <Card className={Style.addProjectButton}>
+                <Card className={`${Style.addProjectButton} card-Custome`}>
                   <Card.Body
                     style={{
                       display: "flex",

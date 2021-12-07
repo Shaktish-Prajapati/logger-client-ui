@@ -78,22 +78,43 @@ function Analytics() {
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
-      <div style={{ marginLeft: "220px" }}>
+      <div>
         <Container>
-          <Row className="mx-5">
-            <Col sm={6}>
+          <Row>
+            <Col
+              sm={12}
+              md={4}
+              lg={3}
+              xl={3}
+              className="card-Custome"
+              style={{ width: "420px" }}
+            >
               <DonutChart />
             </Col>
-            <Col sm={6}>
+            <Col
+              sm={12}
+              md={4}
+              lg={3}
+              xl={3}
+              className="card-Custome"
+              style={{ width: "420px" }}
+            >
               <DonutChart />
             </Col>
-            <Col sm={6}>
+            <Col
+              sm={12}
+              md={4}
+              lg={3}
+              xl={3}
+              className="card-Custome"
+              style={{ width: "420px" }}
+            >
               {/* <PieCharts /> */}
               <DonutChart />
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col className="card-Custome d-flex justify-content-center align-items-center">
               <label
                 style={{ color: "#3E8BE2", fontWeight: "bold", float: "left" }}
               >
@@ -111,7 +132,7 @@ function Analytics() {
                 />
               </label>
             </Col>
-            <Col>
+            <Col className="card-Custome d-flex justify-content-center align-items-center">
               <label
                 style={{ color: "#3E8BE2", fontWeight: "bold", float: "left" }}
               >
@@ -130,13 +151,11 @@ function Analytics() {
                 />
               </label>
             </Col>
-            <Col>
-              <DropdownButton
-                id="dropdown"
-                title="Select duration"
-                style={{ marginTop: "6%" }}
-                bg="light"
-              >
+            <Col
+              className="card-Custome d-flex justify-content-center align-items-center"
+              style={{ position: "relative", zIndex: 5 }}
+            >
+              <DropdownButton id="dropdown" title="Select duration" bg="light">
                 {/* <Dropdown.Item onClick={()=>{setdate({start:Date.now, end:Date().setDate(Date.now - 3)})}}>3 Days</Dropdown.Item> */}
                 <Dropdown.Item onClick={() => filterOnDate({ diff: 5 })}>
                   5 Days
@@ -150,8 +169,8 @@ function Analytics() {
               </DropdownButton>
             </Col>
           </Row>
-          <Row style={{ width: "96%", marginLeft: ".5%" }}>
-            <Col className="analyticsFillChart">
+          <Row className="card-Custome">
+            <Col>
               <LineGraphs />
             </Col>
           </Row>

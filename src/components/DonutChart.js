@@ -181,10 +181,11 @@ const DonutChart = () => {
         activeIndex={activeIndex}
         activeShape={renderActiveShape}
         data={piCount}
+        paddingAngle={5}
         //   namekey='logType'
         cx={200}
         cy={200}
-        innerRadius={60}
+        innerRadius={50}
         outerRadius={80}
         fill="#1F80F8"
         dataKey="count"
