@@ -16,6 +16,7 @@ import {
   faSignOutAlt,
   faUserAlt,
   faChartPie,
+  faDatabase,
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectByCode } from "../action/ProjectAction";
@@ -218,7 +219,7 @@ const NewLogTable = () => {
     name: projectName,
     dashName: projectName,
     link1: {
-      iconName: faHome,
+      iconName: faDatabase,
       linkName: "Logs",
       link: `/newlogTable?code=${code}&name=${projectName}`,
     },
