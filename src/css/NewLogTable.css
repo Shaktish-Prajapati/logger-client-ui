@@ -3,7 +3,8 @@
 .react-bootstrap-table thead {
   /* position: sticky;  */
   /* top: 0;  */
-  background-color: #3e8be2;
+  background-color: var(--iconBackgrounColor);
+
   /* z-index: 1021;  */
 }
 
@@ -22,7 +23,8 @@ td {
 }
 
 th {
-  background-color: #3e8be2;
+  background-color: var(--iconBackgrounColor);
+
   color: var(--primaryColor);
 }
 
@@ -61,7 +63,8 @@ table tr:last-child td:last-child {
 
 #myInput :active {
   background: none;
-  background-color: #3e8be2;
+  background-color: var(--iconBackgrounColor);
+  ;
 }
 
 /* ul.pagination {
@@ -82,7 +85,8 @@ ul.pagination li {
   height: 40px;
   width: 40px;
   float: right;
-  color: #3e8be2;
+  color: var(--iconBackgrounColor);
+
   margin-right: 10px;
   margin-bottom: 10px;
 }
@@ -93,7 +97,7 @@ ul.pagination li {
 }
 
 /* ul.pagination li.active {
-  background-color: #3E8BE2;
+  background-color: var(--iconBackgrounColor);
   border-radius: 5px;
   color: white;
 } */
@@ -109,8 +113,8 @@ ul.pagination li {
 
 .selectBox {
   position: relative;
-  border-color: #3e8be2 !important;
-  color: #3e8be2;
+  border-color: var(--iconBackgrounColor) !important;
+  color: var(--iconBackgrounColor);
 }
 
 .selectBox select {
@@ -124,7 +128,7 @@ ul.pagination li {
   right: 0;
   top: 0;
   bottom: 0;
-  border-color: #3e8be2 !important;
+  border-color: var(--iconBackgrounColor) !important;
 }
 
 #checkboxes {
@@ -137,7 +141,7 @@ ul.pagination li {
 }
 
 #checkboxes label:hover {
-  background-color: #1e90ff;
+  background-color: var(--iconBackgrounColor);
 }
 
 /* changes 02/12/2021 */
@@ -156,11 +160,7 @@ ul.pagination li {
 
 /* updated css  02-11-2021 */
 
-.outer_div {
-  margin-top: 80px;
-  margin-left: 12%;
 
-}
 
 .filter_row {
   display: flex !important;

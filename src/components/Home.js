@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbarr from "./Navbarr";
-import "../css/Home.css";
+import Style from "../css/Home.module.css";
 import {
   faHome,
   faWrench,
@@ -65,11 +65,11 @@ const Home = () => {
       {loading ? (
         <SpinLoader />
       ) : (
-        <Container className="mt-5">
-          <Row className="mt-5" style={{ marginLeft: "100px" }}>
+        <Container>
+          <Row style={{ marginLeft: "120px", marginTop: "120px" }}>
             {adminInfo.data && adminInfo.data.isSuperAdmin ? (
               <Col>
-                <Card className="addProjectButton">
+                <Card className={Style.addProjectButton}>
                   <Card.Body
                     style={{
                       display: "flex",
@@ -78,13 +78,13 @@ const Home = () => {
                     }}
                   >
                     <Card.Text>
-                      <div className="centerAddButton">
+                      <div className={Style.centerAddButton}>
                         <Button
                           style={{
                             borderRadius: "100%",
                             backgroundColor: "#1a83ff",
                           }}
-                          className="homedot btn btn-secondary m-2"
+                          className={`${Style.homedot} btn btn-secondary m-2`}
                           onClick={(e) => {
                             setModal(true);
                           }}

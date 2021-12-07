@@ -65,6 +65,7 @@ function Analytics() {
       link: `/analytics?code=${code}&name=${projectName}`,
     },
   };
+
   const dispatch = useDispatch();
 
   const dispatchmultiple = () => {

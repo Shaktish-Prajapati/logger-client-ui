@@ -4,11 +4,12 @@ import { Col, Card } from "react-bootstrap";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import "../css/theme.css";
 
 const ProjectCard = (props) => {
   return (
     <>
-      <Col sm={4}>
+      <Col sm={4} md={6} xl={4}>
         <Card className="addProjectButton">
           <Card.Body /* className="addProjectButton" */>
             <Card.Title style={{ textAlign: "left", color: "#212529" }}>

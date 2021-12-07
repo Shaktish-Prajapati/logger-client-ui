@@ -1,3 +1,10 @@
 :root {
     --primaryColor: #fff;
+    --primaryTextColor: #fff;
+    --iconBackgrounColor: rgb(58, 120, 242);
+    --hoverColor: rgb(53, 109, 223);
+    --cardColor: rgb(255, 255, 255);
+    --iconsColor: rgb(255, 255, 255);
+    --activeBackgroundColor: rgb(51, 104, 209);
+    --siteBackgroundColor: rgb(58, 120, 242);
 }

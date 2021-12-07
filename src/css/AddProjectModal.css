@@ -3,7 +3,7 @@
 
 .tag-item {
   color: var(--primaryColor);
-  background-color: #1a83ff;
+  background-color: var(--iconBackgrounColor);
   display: inline-block;
   font-size: 14px;
   border-radius: 30px;

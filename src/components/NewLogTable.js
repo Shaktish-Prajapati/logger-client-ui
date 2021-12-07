@@ -29,8 +29,9 @@ import * as IoIcons from "react-icons/io";
 import * as jQuery from "jquery";
 import ReactPaginate from "react-paginate";
 import Dropdown from "@restart/ui/esm/Dropdown";
-import { Col, Container, DropdownButton, Row } from "react-bootstrap";
+import { Card, Col, Container, DropdownButton, Row } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
+import "../css/theme.css";
 
 const { SearchBar } = Search;
 
@@ -298,10 +299,9 @@ const NewLogTable = () => {
             marginTop: "120px",
           }}
         >
-          <Row className="text-center">
+          <Row className="text-center card-Custome">
             <Col>
               <SearchBar
-                style={{ width: "30%", display: "block" }}
                 // {...props.searchProps}
                 placeholder="Enter filter..."
               />
@@ -313,10 +313,10 @@ const NewLogTable = () => {
               />
             </Col>
           </Row>
-          <Row className="filter_row">
+          <Row className="filter_row mt-3">
             <Col>
               <Row>
-                <Col>
+                <Col className="card-Custome">
                   <Row>
                     <Col xl={12}>
                       <label
@@ -395,7 +395,7 @@ const NewLogTable = () => {
                   </Row>
                 </Col>
 
-                <Col>
+                <Col className="card-Custome">
                   <Row>
                     <Col>
                       <Col>
@@ -537,7 +537,7 @@ const NewLogTable = () => {
                   </Row>
                 </Col>
 
-                <Col>
+                <Col className="card-Custome">
                   <Row>
                     <Col>
                       <div className="multiselect">
@@ -670,17 +670,16 @@ const NewLogTable = () => {
               //     theadStyle={ { backgroundColor: 'red' } }
 
               //   />
-
-              <ToolkitProvider
-                keyField="_id"
-                data={data.data.logs}
-                columns={columns}
-                // noDataIndication="No data found"
-                // pagination={ paginationFactory() }
-                search
-              >
-                {(props) => (
-                  <div className="outer_div">
+              <Card style={{ marginLeft: "175px" }}>
+                <ToolkitProvider
+                  keyField="_id"
+                  data={data.data.logs}
+                  columns={columns}
+                  // noDataIndication="No data found"
+                  // pagination={ paginationFactory() }
+                  search
+                >
+                  {(props) => (
                     <Row className="mt-5">
                       <BootstrapTable
                         {...props.baseProps}
@@ -693,9 +692,9 @@ const NewLogTable = () => {
                         // }
                       />
                     </Row>
-                  </div>
-                )}
-              </ToolkitProvider>
+                  )}
+                </ToolkitProvider>
+              </Card>
             ) : (
               <h2 style={{ color: "#212925", alignItems: "center" }}>
                 No Log Available
