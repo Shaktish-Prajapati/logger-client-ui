@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../css/SignUp.css";
+import "../../css/SignUp.css";
 import { Button, Form, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { loginWithEmail } from "../action/AdminAction";
+import { loginWithEmail } from "../../redux/action/AdminAction";
 import { useHistory } from "react-router-dom";
-import { adminRegister } from "../action/AdminAction";
+import { adminRegister } from "../../redux/action/AdminAction";
 
 const SignUp = () => {
   const dispatch = useDispatch();

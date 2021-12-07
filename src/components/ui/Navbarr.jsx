@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import "../css/Navbarr.css";
+import "../../css/Navbarr.css";
+
 import { IconContext } from "react-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { adminLogout } from "../action/AdminAction";
+import { adminLogout } from "../../redux/action/AdminAction";
 import { useHistory } from "react-router";
 
 const Navbarr = (props) => {

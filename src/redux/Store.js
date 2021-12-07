@@ -4,12 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import {ADMIN_LOGOUT} from './constants/AdminConstants'
+import {ADMIN_LOGOUT} from './types/AdminConstants'
 
 import {
     adminLoginReducer,
     adminRegisterReducer,
-} from "./reducers/AdminReducer"
+} from "./reducer/AdminReducer"
 
 import {
     getAllProjectReducer,
@@ -17,7 +17,7 @@ import {
     createNewProjectReducer,
     getLogCountsReducer,
     getLogCountsByDateReducer
-} from './reducers/ProjectReducer'
+} from './reducer/ProjectReducer'
 
 
 

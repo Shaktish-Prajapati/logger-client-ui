@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../css/Login.css";
+import "../../css/Login.css";
 import { Button, Form, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { loginWithEmail } from "../action/AdminAction";
+import { loginWithEmail } from "../../redux/action/AdminAction";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {

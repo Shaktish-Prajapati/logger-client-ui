@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Navbarr from "./Navbarr";
-import "../css/LogTable.css";
+import Navbarr from "../ui/Navbarr";
+import "../../css/LogTable.css";
 import * as IoIcons from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { getProjectByCode } from "../action/ProjectAction";
+import { getProjectByCode } from "../../redux/action/ProjectAction";
 import {
   faHome,
   faWrench,
@@ -13,7 +13,7 @@ import {
   faSignOutAlt,
   faUserAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import SpinLoader from "./support/SpinLoader";
+import SpinLoader from "../utils/SpinLoader";
 
 const LogTable = () => {
   const [tabel, setRefresh] = useState("");

@@ -1,17 +1,17 @@
-import "./App.css";
+import "../css/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from "./components/Login";
+import Login from "../components/Screens/Login";
 // import Register from "./components/Register";
-import SignUp from "./components/SignUp";
-import Navbarr from "./components/Navbarr";
-import Home from "./components/Home";
-import LogTable from "./components/LogTable";
-import NewLogTable from "./components/NewLogTable";
-import Analytics from "./components/Analytics";
-import CustomPagination from "./components/CustomPagination";
-import Protected from "./components/Protected";
-import FrogotPassowrd from "./components/Screens/ForgotPassword";
-import ResetPassword from "./components/Screens/resetPassword";
+import SignUp from "./Screens/SignUp";
+import Navbarr from "./ui/Navbarr";
+import LogTable from "./Screens/LogTable";
+import NewLogTable from "./Screens/NewLogTable";
+import Analytics from "./Screens/Analytics";
+import CustomPagination from "./utils/CustomPagination";
+import Protected from "./utils/Protected";
+import FrogotPassowrd from "./Screens/ForgotPassword";
+import ResetPassword from "./Screens/resetPassword";
+import Home from "./Screens/Home";
 
 function App() {
   return (

@@ -1,31 +1,22 @@
-import React, { useState, useEffect, useCallback } from "react";
-import Navbarr from "./Navbarr";
-import "../css/Analytics.css";
-import {
-  faHome,
-  faWrench,
-  faDatabase,
-  faPlus,
-  faArrowCircleRight,
-  faSignOutAlt,
-  faUserAlt,
-  faChartPie,
-} from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from "react";
+import { faDatabase, faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { getLogTypeCounts, getLogByDate } from "../action/ProjectAction";
-import SpinLoader from "./support/SpinLoader";
 import {
-  Col,
-  Card,
-  Row,
-  Dropdown,
-  DropdownButton,
-  Container,
-} from "react-bootstrap";
-import PieCharts from "./PieChart";
-import LineGraphs from "./LineGraphs";
+  getLogTypeCounts,
+  getLogByDate,
+} from "../../redux/action/ProjectAction";
+import { Col, Row, Dropdown, DropdownButton, Container } from "react-bootstrap";
 import { multiSelectFilter } from "react-bootstrap-table2-filter";
-import DonutChart from "./DonutChart";
+
+// todo : 1:2 custome imports
+
+import Navbarr from "../ui/Navbarr";
+import "../../css/Analytics.css";
+
+import SpinLoader from "../utils/SpinLoader";
+import PieCharts from "../utils/PieChart";
+import LineGraphs from "../utils/LineGraphs";
+import DonutChart from "../utils/DonutChart";
 
 function Analytics() {
   const [date, setdate] = useState({

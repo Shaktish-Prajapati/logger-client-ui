@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Navbarr from "./Navbarr";
-import Style from "../css/Home.module.css";
+import Navbarr from "../ui/Navbarr";
+import Style from "../../css/home.css";
 import {
   faHome,
   faWrench,
@@ -15,10 +15,10 @@ import { Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getAllProject } from "../action/ProjectAction";
-import AddProjectModal from "./AddProjectModal";
-import SpinLoader from "./support/SpinLoader";
-import ProjectCard from "./ProjectCard";
+import { getAllProject } from "../../redux/action/ProjectAction";
+import AddProjectModal from "../utils/AddProjectModal";
+import SpinLoader from "../utils/SpinLoader";
+import ProjectCard from "../utils/ProjectCard";
 import { useHistory } from "react-router";
 
 const Home = () => {
@@ -69,7 +69,7 @@ const Home = () => {
           <Row style={{ marginLeft: "120px", marginTop: "120px" }}>
             {adminInfo.data && adminInfo.data.isSuperAdmin ? (
               <Col>
-                <Card className={`${Style.addProjectButton} card-Custome`}>
+                <Card className={Style.addProjectButton}>
                   <Card.Body
                     style={{
                       display: "flex",

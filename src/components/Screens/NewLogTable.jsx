@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import Navbarr from "./Navbarr";
+import Navbarr from "../ui/Navbarr";
 // import ProjectSideBar from './ProjectSideBar'
-import "../css/NewLogTable.css";
+import "../../css/NewLogTable.css";
 import BootstrapTable from "react-bootstrap-table-next";
 import filterFactory, {
   selectFilter,
@@ -19,8 +19,8 @@ import {
   faDatabase,
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { getProjectByCode } from "../action/ProjectAction";
-import SpinLoader from "./support/SpinLoader";
+import { getProjectByCode } from "../../redux/action/ProjectAction";
+import SpinLoader from "../utils/SpinLoader";
 import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
 import "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css";
 import paginationFactory from "react-bootstrap-table2-paginator";
@@ -31,7 +31,7 @@ import ReactPaginate from "react-paginate";
 import Dropdown from "@restart/ui/esm/Dropdown";
 import { Card, Col, Container, DropdownButton, Row } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
-import "../css/theme.css";
+import "../../css/theme.css";
 
 const { SearchBar } = Search;
 

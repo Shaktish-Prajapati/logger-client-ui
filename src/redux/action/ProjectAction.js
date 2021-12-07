@@ -15,7 +15,7 @@ import {
   GET_LOG_COUNT_BY_DATE_REQUEST,
   GET_LOG_COUNT_BY_DATE_SUCCESS,
   GET_LOG_COUNT_BY_DATE_FAIL,
-} from "../constants/ProjectConstants";
+} from "../types/ProjectConstants";
 
 export const getAllProject = () => async (dispatch) => {
   try {
