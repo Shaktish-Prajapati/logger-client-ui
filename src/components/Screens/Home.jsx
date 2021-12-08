@@ -66,7 +66,7 @@ const Home = () => {
         <SpinLoader />
       ) : (
         <Container>
-          <Row style={{ marginLeft: "120px", marginTop: "120px" }}>
+          <Row style={{ marginLeft: "150px", marginTop: "120px" }}>
             {adminInfo.data && adminInfo.data.isSuperAdmin ? (
               <Col>
                 <Card className="addProjectDiv">

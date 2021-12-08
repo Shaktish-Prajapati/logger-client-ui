@@ -74,7 +74,7 @@ function Analytics() {
         <div
           style={{
             marginLeft: "150px",
-            marginTop: "150px",
+            marginTop: "50px",
           }}
         >
           <Row>
@@ -83,7 +83,7 @@ function Analytics() {
               md={4}
               lg={3}
               xl={3}
-              className="card-Custome"
+              className=""
               style={{ width: "420px" }}
             >
               <DonutChart />
@@ -93,7 +93,7 @@ function Analytics() {
               md={4}
               lg={3}
               xl={3}
-              className="card-Custome"
+              className=""
               style={{ width: "420px" }}
             >
               <DonutChart />
@@ -103,7 +103,7 @@ function Analytics() {
               md={4}
               lg={3}
               xl={3}
-              className="card-Custome"
+              className=""
               style={{ width: "420px" }}
             >
               {/* <PieCharts /> */}
@@ -111,7 +111,7 @@ function Analytics() {
             </Col>
           </Row>
           <Row>
-            <Col className="card-Custome d-flex justify-content-center align-items-center">
+            <Col className=" d-flex justify-content-center align-items-center">
               <label
                 style={{ color: "#3E8BE2", fontWeight: "bold", float: "left" }}
               >
@@ -129,7 +129,7 @@ function Analytics() {
                 />
               </label>
             </Col>
-            <Col className="card-Custome d-flex justify-content-center align-items-center">
+            <Col className=" d-flex justify-content-center align-items-center">
               <label
                 style={{ color: "#3E8BE2", fontWeight: "bold", float: "left" }}
               >
@@ -149,7 +149,7 @@ function Analytics() {
               </label>
             </Col>
             <Col
-              className="card-Custome d-flex justify-content-center align-items-center"
+              className=" d-flex justify-content-center align-items-center mt-3"
               style={{ position: "relative", zIndex: 5 }}
             >
               <DropdownButton id="dropdown" title="Select duration" bg="light">
@@ -166,7 +166,7 @@ function Analytics() {
               </DropdownButton>
             </Col>
           </Row>
-          <Row className="card-Custome">
+          <Row className="">
             <Col>
               <LineGraphs />
             </Col>

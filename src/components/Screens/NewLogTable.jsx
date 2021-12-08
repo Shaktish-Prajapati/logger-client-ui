@@ -303,7 +303,7 @@ const NewLogTable = () => {
           style={{
             marginLeft: "160px",
             width: "88%",
-            marginTop: "120px",
+            marginTop: "130px",
           }}
         >
           <Row className="text-center card-Custome">
@@ -323,7 +323,7 @@ const NewLogTable = () => {
           <Row className="filter_row mt-3">
             <Col>
               <Row>
-                <Col className="card-Custome">
+                <Col>
                   <Row>
                     <Col xl={12}>
                       <label
@@ -402,7 +402,7 @@ const NewLogTable = () => {
                   </Row>
                 </Col>
 
-                <Col className="card-Custome">
+                <Col>
                   <Row>
                     <Col>
                       <Col>
@@ -544,7 +544,7 @@ const NewLogTable = () => {
                   </Row>
                 </Col>
 
-                <Col className="card-Custome">
+                <Col>
                   <Row>
                     <Col>
                       <div className="multiselect">
@@ -677,7 +677,7 @@ const NewLogTable = () => {
               //     theadStyle={ { backgroundColor: 'red' } }
 
               //   />
-              <Card style={{ marginLeft: "175px" }}>
+              <div style={{ marginLeft: "175px" }}>
                 <ToolkitProvider
                   keyField="_id"
                   data={data.data.logs}
@@ -701,13 +701,13 @@ const NewLogTable = () => {
                     </Row>
                   )}
                 </ToolkitProvider>
-              </Card>
+              </div>
             ) : (
               <h2 style={{ color: "#212925", alignItems: "center" }}>
                 No Log Available
               </h2>
             )}
-            <Container style={{ marginLeft: "138px" }}>
+            <Container style={{ marginLeft: "155px" }}>
               <ReactPaginate
                 breakLabel="..."
                 nextLabel="Next >"
