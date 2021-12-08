@@ -27,7 +27,7 @@
   backdrop-filter: blur(10px);
   border-right: 10px;
   background-color: var(--siteBackgroundColor);
-  width: 15%;
+  width: 17%;
   height: 100vh;
   display: flex;
   justify-content: space-around;
@@ -88,22 +88,20 @@
   transition: 350ms;
 }
 
-.nav-link-outer-sec {
-  text-align: center;
-}
 
 
 .nav-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   text-decoration: none;
   padding: 4% 0% 4% 0%;
-  margin-left: -2px;
   list-style: none;
   font-size: 100%;
   color: #000;
+  width: 100%;
+  display: flex;
 }
+
+
 
 .nav-text a {
   text-decoration: none;
@@ -132,14 +130,14 @@
 }
 
 .titleNavbar {
-  margin-left: 4%;
+  margin-left: 5%;
   float: left !important;
 
 }
 
 .logoutNavbar {
   margin-right: 2%;
-  margin-left: 78%;
+  margin-left: 72%;
   cursor: pointer;
 }
 
@@ -152,6 +150,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
+
 }
 
 span {
@@ -184,7 +183,7 @@ span {
 }
 
 .active {
-  background-color: var(--activeBackgroundColor);
+  background-color: var(--hoverColor);
   color: rgb(255, 255, 255);
 }
 
@@ -222,6 +221,6 @@ span {
   align-items: center;
   font-size: 2rem;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   pointer-events: none;
 }

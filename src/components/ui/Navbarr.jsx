@@ -105,7 +105,7 @@ const Navbarr = (props) => {
             </div>
 
             {console.log(props.navbardetails.link1.iconName)}
-            <section className="nav-link-outer-sec">
+            <section>
               <Link
                 to={
                   props.navbardetails.link1 &&
@@ -121,13 +121,27 @@ const Navbarr = (props) => {
                     : "nav-text"
                 }
               >
-                <FontAwesomeIcon
-                  style={{ marginRight: "8px" }}
-                  icon={props.navbardetails.link1.iconName}
-                />
+                <section
+                  style={{
+                    backgroundColor: "rgb(62, 139, 226)",
+                    borderRadius: "5px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "30px",
+                    height: "30px",
+                    marginLeft: "10px",
+                    marginRight: "10px",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={props.navbardetails.link1.iconName}
+                  />
+                </section>
 
                 {props.navbardetails.link1.linkName}
               </Link>
+
               <Link
                 to={
                   props.navbardetails.link2 &&
@@ -136,12 +150,29 @@ const Navbarr = (props) => {
                     ? ""
                     : props.navbardetails.link2.link
                 }
-                className="nav-text "
+                className={
+                  currentRoute.includes("analytics")
+                    ? "nav-text active"
+                    : "nav-text"
+                }
               >
-                <FontAwesomeIcon
-                  style={{ marginRight: "8px" }}
-                  icon={props.navbardetails.link2.iconName}
-                />{" "}
+                <section
+                  style={{
+                    backgroundColor: "rgb(62, 139, 226)",
+                    borderRadius: "5px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "30px",
+                    height: "30px",
+                    marginLeft: "10px",
+                    marginRight: "10px",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={props.navbardetails.link2.iconName}
+                  />{" "}
+                </section>
                 {props.navbardetails.link2.linkName}{" "}
               </Link>
             </section>
