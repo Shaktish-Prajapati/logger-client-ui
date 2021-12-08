@@ -19,3 +19,12 @@
 
 
 /* custome */
+.card-Custome{
+    background-color: var(--cardColor) !important;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 20px !important;
+    border: none !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 1px 4px 25px -11px rgba(63, 63, 63, 0.5) !important;
+}

@@ -69,8 +69,14 @@ function Analytics() {
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
-      <div style={{ marginTop: "120px" }}>
-        <Container>
+
+      <Container>
+        <div
+          style={{
+            marginLeft: "150px",
+            marginTop: "150px",
+          }}
+        >
           <Row>
             <Col
               sm={12}
@@ -165,8 +171,8 @@ function Analytics() {
               <LineGraphs />
             </Col>
           </Row>
-        </Container>
-      </div>
+        </div>
+      </Container>
     </>
   );
 }
