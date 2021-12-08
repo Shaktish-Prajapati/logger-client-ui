@@ -29,7 +29,14 @@ import * as IoIcons from "react-icons/io";
 import * as jQuery from "jquery";
 import ReactPaginate from "react-paginate";
 import Dropdown from "@restart/ui/esm/Dropdown";
-import { Card, Col, Container, DropdownButton, Row } from "react-bootstrap";
+import {
+  Card,
+  Col,
+  Container,
+  DropdownButton,
+  Row,
+  Table,
+} from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
 import "../../css/theme.css";
 
@@ -291,7 +298,7 @@ const NewLogTable = () => {
       {/* <ProjectSideBar /> */}
       {/* <div style={{paddingTop:'1%'}}> */}
 
-      <Container className="mt-5">
+      <Container className="mt-3">
         <Container
           style={{
             marginLeft: "160px",
