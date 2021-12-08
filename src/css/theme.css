@@ -17,14 +17,5 @@
 
 
 
-/* custome */
 
-.card-Custome {
-    backdrop-filter: blur(10px) !important;
-    background-color: var(--cardColor);
-    padding: 15px;
-    margin: 10px;
-    border-radius: 20px;
-    border: none !important;
-    box-shadow: 1px 4px 25px -11px rgba(63, 63, 63, 0.5) !important;
-}
+/* custome */

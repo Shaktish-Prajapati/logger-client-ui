@@ -10,7 +10,7 @@ const ProjectCard = (props) => {
   return (
     <>
       <Col sm={4} md={6} xl={4}>
-        <Card className="addProjectButton">
+        <Card className="addProjectDiv">
           <Card.Body /* className="addProjectButton" */>
             <Card.Title style={{ textAlign: "left", color: "#212529" }}>
               {props.data.name}

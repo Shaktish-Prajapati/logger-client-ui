@@ -69,7 +69,7 @@ const Home = () => {
           <Row style={{ marginLeft: "120px", marginTop: "120px" }}>
             {adminInfo.data && adminInfo.data.isSuperAdmin ? (
               <Col>
-                <Card className={Style.addProjectButton}>
+                <Card className="addProjectDiv">
                   <Card.Body
                     style={{
                       display: "flex",
@@ -77,8 +77,8 @@ const Home = () => {
                       alignItems: "center",
                     }}
                   >
-                    <Card.Text>
-                      <div className={Style.centerAddButton}>
+                    <div>
+                      <section style={{ marginLeft: "13px" }}>
                         <Button
                           style={{
                             borderRadius: "100%",
@@ -91,16 +91,18 @@ const Home = () => {
                         >
                           <FontAwesomeIcon icon={faPlus} />
                         </Button>
-                      </div>
-                      <p style={{ fontWeight: "bold", color: "#1a83ff" }}>
-                        Add Project
-                      </p>
-                      <AddProjectModal
-                        show={modal}
-                        onHide={() => setModal(false)}
-                        closemodal={closeModal}
-                      />
-                    </Card.Text>
+                      </section>
+                      <Card.Text>
+                        <p style={{ fontWeight: "bold", color: "#1a83ff" }}>
+                          Add Project
+                        </p>
+                        <AddProjectModal
+                          show={modal}
+                          onHide={() => setModal(false)}
+                          closemodal={closeModal}
+                        />
+                      </Card.Text>
+                    </div>
                   </Card.Body>
                 </Card>
               </Col>

@@ -69,7 +69,7 @@ function Analytics() {
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
-      <div>
+      <div style={{ marginTop: "120px" }}>
         <Container>
           <Row>
             <Col
