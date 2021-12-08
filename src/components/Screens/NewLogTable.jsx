@@ -298,7 +298,7 @@ const NewLogTable = () => {
       {/* <ProjectSideBar /> */}
       {/* <div style={{paddingTop:'1%'}}> */}
 
-      <Container className="mt-3">
+      <Container>
         <Container
           style={{
             marginLeft: "160px",
@@ -728,7 +728,6 @@ const NewLogTable = () => {
           </>
         )}
       </Container>
-
       {/* </div> */}
     </>
   );
