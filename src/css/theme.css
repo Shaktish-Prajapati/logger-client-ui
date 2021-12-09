@@ -11,3 +11,8 @@
 .card {
     border: none !important;
 }
+
+
+table thead {
+    background-color: var(--iconBackgrounColor) !important;
+}

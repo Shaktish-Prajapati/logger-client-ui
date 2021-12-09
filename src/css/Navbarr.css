@@ -96,9 +96,13 @@
   padding: 4% 0% 4% 0%;
   list-style: none;
   font-size: 100%;
-  color: #000;
+  color: rgb(0, 0, 0);
   width: 100%;
   display: flex;
+}
+
+svg {
+  color: #fff
 }
 
 
@@ -115,7 +119,7 @@
 
 /* .nav-text a:hover */
 .nav-text:hover {
-  color: #000;
+  color: #000 !important;
   text-decoration: none;
   transition-duration: .5s;
 }
@@ -184,7 +188,7 @@ span {
 
 .active {
   background-color: var(--hoverColor);
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 
@@ -224,3 +228,4 @@ span {
   color: rgb(255, 255, 255);
   pointer-events: none;
 }
+

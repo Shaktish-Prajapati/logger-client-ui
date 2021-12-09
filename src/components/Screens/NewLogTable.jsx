@@ -7,6 +7,8 @@ import filterFactory, {
   selectFilter,
   textFilter,
 } from "react-bootstrap-table2-filter";
+import ReactReadMoreReadLess from "react-read-more-read-less";
+
 import {
   faHome,
   faWrench,
@@ -39,29 +41,29 @@ import {
 } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
 import "../../css/theme.css";
+import SearchBox from "../ui/SearchField";
 
 const { SearchBar } = Search;
 
 function errorFormatter(cell, row) {
-  if (row.logType) {
-    return (
-      <span>
-        {cell === "error" ? (
-          <strong style={{ color: "red" }}>{cell.toUpperCase()}</strong>
-        ) : cell === "warn" ? (
-          <strong style={{ color: "violet" }}>{cell.toUpperCase()}</strong>
-        ) : cell === "info" ? (
-          <strong style={{ color: "blue" }}>{cell.toUpperCase()}</strong>
-        ) : cell === "verbose" ? (
-          <strong style={{ color: "green" }}>{cell.toUpperCase()}</strong>
-        ) : (
-          <strong style={{ color: "orange" }}>{cell.toUpperCase()}</strong>
-        )}
-      </span>
-    );
-  }
-
-  return <span>$ {cell} NTD</span>;
+  // if (row.logType) {
+  //   return (
+  //     <span>
+  //       {cell === "error" ? (
+  //         <strong style={{ color: "red" }}>{cell.toUpperCase()}</strong>
+  //       ) : cell === "warn" ? (
+  //         <strong style={{ color: "violet" }}>{cell.toUpperCase()}</strong>
+  //       ) : cell === "info" ? (
+  //         <strong style={{ color: "blue" }}>{cell.toUpperCase()}</strong>
+  //       ) : cell === "verbose" ? (
+  //         <strong style={{ color: "green" }}>{cell.toUpperCase()}</strong>
+  //       ) : (
+  //         <strong style={{ color: "orange" }}>{cell.toUpperCase()}</strong>
+  //       )}
+  //     </span>
+  //   );
+  // }
+  // return <span>$ {cell} NTD</span>;
 }
 
 const defaultSorted = [
@@ -144,6 +146,13 @@ const NewLogTable = () => {
   // todo : 1:2 neeraj useref for refresh button click
   const startDateRef = useRef(null);
   const endDatRef = useRef(null);
+
+
+
+  const logTypeRef = useRef(null);
+  console.log("logType", logTypeRef.current);
+
+
 
   // 2) dropdown refresh with drop down button click
 
@@ -292,6 +301,13 @@ const NewLogTable = () => {
     }
   }
 
+  // console.log("data neeraj abhi", data);
+  // const logTypeData = () => {
+  //   if (data.data.logs.logType == "info") {
+  //     return <div className="divCellRow Info">{data.data.logs.logType}</div>;
+  //   }
+  // };
+
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
@@ -312,6 +328,8 @@ const NewLogTable = () => {
                 // {...props.searchProps}
                 placeholder="Enter filter..."
               />
+
+              <SearchBox logTypeRef={logTypeRef} />
             </Col>
             <Col>
               <IoIcons.IoIosRefreshCircle
@@ -362,6 +380,7 @@ const NewLogTable = () => {
                           color: "#3E8BE2",
                           fontWeight: "bold",
                           float: "left",
+                          marginTop: "20px",
                         }}
                       >
                         End date
@@ -677,8 +696,10 @@ const NewLogTable = () => {
               //     theadStyle={ { backgroundColor: 'red' } }
 
               //   />
-              <div style={{ marginLeft: "175px" }}>
-                <ToolkitProvider
+              <div>
+                {/*
+              
+               <ToolkitProvider
                   keyField="_id"
                   data={data.data.logs}
                   columns={columns}
@@ -686,9 +707,16 @@ const NewLogTable = () => {
                   // pagination={ paginationFactory() }
                   search
                 >
+              
+              */}
+
+                {/*  
                   {(props) => (
-                    <Row className="mt-5">
-                      <BootstrapTable
+                  
+                  */}
+                <Row className="mt-5">
+                  {/*
+                        <BootstrapTable
                         {...props.baseProps}
                         noDataIndication="No data found"
                         // pagination={ paginationFactory({
@@ -697,10 +725,199 @@ const NewLogTable = () => {
                         //   totalSize: data.data.logs.length
                         // })
                         // }
-                      />
-                    </Row>
-                  )}
-                </ToolkitProvider>
+                      />  
+                        
+
+                    */}
+
+                  {console.log("data", data.data.logs)}
+                  <Container style={{ marginLeft: "173px" }}>
+                    {/*
+                    
+                     <table>
+                      <thead>
+                        <tr>
+                          <th>Mac address</th>
+                          <th>Log Message</th>
+                          <th>Log Type</th>
+                          <th>Log Generated Time</th>
+                          <th>Device Code</th>
+                          <th>Device Type</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {data.data.logs.map((logsData) => {
+                          const deviceCode = logsData.device_types.split(
+                            "|",
+                            2
+                          )[0];
+                          const deviceName = logsData.device_types.split(
+                            "|",
+                            2
+                          )[1];
+
+                          const oldDate = logsData.logGeneratedDate;
+                          const newDate = oldDate.substring(0, 10);
+                          return (
+                            <tr>
+                              <td>
+                                <ReactReadMoreReadLess
+                                  charLimit={40}
+                                  readMoreText={"Read more ▼"}
+                                  readLessText={"Read less ▲"}
+                                >
+                                  {logsData.did}
+                                </ReactReadMoreReadLess>
+                              </td>
+                              <td>
+                                <ReactReadMoreReadLess
+                                  charLimit={40}
+                                  readMoreText={"Read more ▼"}
+                                  readLessText={"Read less ▲"}
+                                >
+                                  {logsData.logMsg}
+                                </ReactReadMoreReadLess>
+                              </td>
+
+                              <td>{logsData.logType}</td>
+                              <td>{newDate}</td>
+                              <td>{deviceCode}</td>
+                              <td>{deviceName}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                    
+                    */}
+
+                    {/*xustome table -----------------------------*/}
+                    <div className="divTable" ref={logTypeRef}>
+                      <div className="headRow">
+                        <div className="divCellHead">Mac address</div>
+                        <div className="divCellHead">Log Message</div>
+                        <div className="divCellHead">Log Type</div>
+                        <div className="divCellHead">Log Generated Time</div>
+                        <div className="divCellHead">Device Code</div>
+                        <div className="divCellHead">Device Type</div>
+                      </div>
+                      {data.data.logs.map((logsData) => {
+                        const deviceCode = logsData.device_types.split(
+                          "|",
+                          2
+                        )[0];
+                        const deviceName = logsData.device_types.split(
+                          "|",
+                          2
+                        )[1];
+
+                        const oldDate = logsData.logGeneratedDate;
+                        const newDate = oldDate.substring(0, 10);
+                        return (
+                          <>
+                            <div className="divRow">
+                              <div className="divCellRow">
+                                <p
+                                  style={{
+                                    width: "200px",
+                                    overflow: "hidden",
+                                  }}
+
+
+
+                                >
+                                  {logsData.did}
+                                </p>
+                              </div>
+                              <div className="divCellRow">
+                                <p
+                                  style={{
+                                    width: "200px",
+                                    overflow: "hidden",
+                                  }}
+
+
+                                >
+                                  <ReactReadMoreReadLess
+                                    charLimit={40}
+                                    readMoreText={"Read more ▼"}
+                                    readLessText={"Read less ▲"}
+                                  >
+                                    {logsData.logMsg}
+                                  </ReactReadMoreReadLess>
+                                </p>
+                              </div>
+                              <div className="divCellRow" >
+                                {logsData.logType}
+                              </div>
+
+                              {/*
+                                    {logsData.logType == "info" ?
+                                 <div className="divCellRow Info">{logsData.logType}</div>
+                            : (logsData.logType == "warn" ?
+                                 <div className="divCellRow Warn">{logsData.logType}</div>
+                            :(logsData.logType == "debug" ?
+                                 <div className="divCellRow Debug">{logsData.logType}</div>
+                            : (logsData.logType == "error" ?
+                                <div className="divCellRow Error ">{logsData.logType}</div>
+                                : null}
+                              
+                                  
+                                  */}
+                              {/*
+
+ {logsData.logType == "info" ? (
+                                <div
+                                  className="divCellRow"
+                                  style={{
+                                    backgroundColor: "blue",
+                                  }}
+                                >
+                                  {logsData.logType}
+                                </div>
+                              ) : logsData.logType == "error" ? (
+                                <div
+                                  className="divCellRow"
+                                  style={{
+                                    backgroundColor: "red",
+                                  }}
+                                >
+                                  {logsData.logType}
+                                </div>
+                              ) : logsData.type == "debug" ? (
+                                <div
+                                  className="divCellRow"
+                                  style={{
+                                    backgroundColor: "green",
+                                  }}
+                                >
+                                  {logsData.logType}
+                                </div>
+                              ) : logsData.type == "warn" ? (
+                                <div
+                                  className="divCellRow"
+                                  style={{
+                                    backgroundColor: "orange",
+                                  }}
+                                >
+                                  {logsData.logType}
+                                </div>
+                              ) : null}
+
+*/}
+                              <div className="divCellRow">{newDate}</div>
+                              <div className="divCellRow">{deviceCode}</div>
+                              <div className="divCellRow">{deviceName}</div>
+                            </div>
+                          </>
+                        );
+                      })}
+                    </div>
+                  </Container>
+                </Row>
+                {/*
+                  </ToolkitProvider>
+                  */}
               </div>
             ) : (
               <h2 style={{ color: "#212925", alignItems: "center" }}>
