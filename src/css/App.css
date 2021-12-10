@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+
+
 body {
   background: rgb(255, 255, 255) !important;
   /* overflow-X: hidden; */
@@ -15,28 +17,6 @@ ul {
   width: 100%;
 }
 
-table {
-  width: 85%;
-  overflow-X: scroll;
-}
 
-
-table tbody,
-td,
-tfoot,
-th,
-thead,
-tr {
-  border: 1px solid rgb(155, 155, 155);
-}
-
-thead th {
-
-  border: 1px solid rgb(155, 155, 155);
-}
-
-tbody td {
-  border: 1px solid rgb(155, 155, 155);
-}
 
 

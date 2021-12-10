@@ -17,11 +17,11 @@ import * as jQuery from 'jquery';
 import ReactPaginate from 'react-paginate';
 import Dropdown from '@restart/ui/esm/Dropdown';
 import { Col, Container, DropdownButton, Row } from 'react-bootstrap'
+import { CSVExport } from 'react-bootstrap-table2-toolkit';
+import ReactReadMoreReadLess from "react-read-more-read-less";
+// import NewTable from './NewTable';
 
 const { SearchBar } = Search;
-
-
-
 
 
 
@@ -47,9 +47,14 @@ function errorFormatter(cell, row) {
   );
 }
 
+
+const { ExportCSVButton } = CSVExport;
+
+
 const defaultSorted = [{
   dataField: 'name',
-  order: 'desc'
+  order: 'desc',
+
 }];
 
 const columns = [{
@@ -65,6 +70,23 @@ const columns = [{
 {
   dataField: 'logMsg',
   text: 'Log Message',
+  headerAlign: 'center',
+  formatter: (col, row) => {
+    return <div style={{ width: 220, height: "auto", overflow: "hidden" }}>
+
+
+
+      <ReactReadMoreReadLess
+        charLimit={40}
+        readMoreText={"Read more ▼"}
+        readLessText={"Read less ▲"}
+      >
+        {col}
+      </ReactReadMoreReadLess>
+
+
+    </div>
+  }
   // style: { backgroundColor: 'green' }
 
 },
@@ -78,6 +100,7 @@ const columns = [{
 {
   dataField: 'logGeneratedDate',
   text: 'Log Generated At',
+  width: "20",
   //   filter: textFilter(),
   formatter: cell => cell.split("T")[0],
   sort: true
@@ -254,7 +277,6 @@ const NewLogTable = () => {
 
 
 
-
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
@@ -281,9 +303,12 @@ const NewLogTable = () => {
                   //   /> 
 
                   <ToolkitProvider
+
                     keyField="_id"
                     data={data.data.logs}
                     columns={columns}
+                    columnToggle
+                    exportCSV
                     // noDataIndication="No data found" 
                     // pagination={ paginationFactory() }
                     search
@@ -292,6 +317,7 @@ const NewLogTable = () => {
                       props => (
                         <div className='logtableStyle' className='mt-5'>
                           <Row>
+
                             <Col> <SearchBar style={{ width: '40%', display: 'block' }} {...props.searchProps} placeholder="Enter filter..." /></Col>
                             <Col>  <IoIcons.IoIosRefreshCircle onClick={refreshButton} className='refreshButton' /></Col>
                           </Row>
@@ -360,20 +386,27 @@ const NewLogTable = () => {
 
 
                           </div>
-                          <Container fluid className="mt-5">
-                            <BootstrapTable
 
-                              loading={true}
-                              {...props.baseProps}
-                              noDataIndication="No data found"
-                            // pagination={ paginationFactory({
-                            //   // custom: true,
-                            //   sizePerPage:25,
-                            //   totalSize: data.data.logs.length
-                            // }) 
-                            // }
-                            />
-                          </Container>
+                          <Row>
+                            <Col lg={12} className="mt-2"><ExportCSVButton {...props.csvProps}>Export CSV</ExportCSVButton></Col>
+                          </Row>
+
+
+
+                          <p className="mt-2"></p>
+                          <BootstrapTable
+
+                            filter={filterFactory()}
+
+                            {...props.baseProps}
+                            noDataIndication="No data found"
+                          // pagination={ paginationFactory({
+                          //   // custom: true,
+                          //   sizePerPage:25,
+                          //   totalSize: data.data.logs.length
+                          // }) 
+                          // }
+                          />
                         </div>
                       )
                     }
@@ -400,6 +433,21 @@ const NewLogTable = () => {
             </>
           }
         </div>
+
+        {/*
+          
+             <Container>
+          <NewTable />
+        </Container>
+
+          */}
+
+
+
+
+
+
+
       </Container>
 
       {/* </div> */}

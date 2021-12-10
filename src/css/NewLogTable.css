@@ -137,12 +137,18 @@ ul.pagination li {
 /* custome table */
 
 
-.react-bootstrap-table{
+/* .react-bootstrap-table{
   overflow-x: scroll;
-}
+  
+} */
 
 
 
 th{
   color:#fff;
+}
+
+.react-bs-table-csv-btn btn btn-default {
+  color:#fff;
+  font-weight: 600;
 }
