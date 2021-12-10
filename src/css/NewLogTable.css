@@ -137,54 +137,12 @@ ul.pagination li {
 /* custome table */
 
 
-.divTable {
-  display: table;
-  width: auto;
-  border-spacing: 2px;
-  /*cellspacing:poor IE support for  this*/
-  /* border-collapse:separate;*/
+.react-bootstrap-table{
+  overflow-x: scroll;
 }
 
-.headRow {
-  background-color: var(--iconBackgrounColor) !important;
-  height: 60px;
-  display: flex;
 
-}
 
-.divCellHead {
-  /*fix for  buggy browsers*/
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  color: #fff;
-  border: 1px solid rgb(191, 191, 191);
-  height: 100%;
-}
-
-.divRow {
-  display: flex;
-}
-
-.divCellRow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /*fix for  buggy browsers*/
-  width: 150px;
-  border: 1px solid rgb(191, 191, 191);
-}
-
-@media (min-width: 1400px) {
-  .divCellHead {
-
-    width: 190px;
-
-  }
-
-  .divCellRow {
-
-    width: 190px;
-  }
+th{
+  color:#fff;
 }
