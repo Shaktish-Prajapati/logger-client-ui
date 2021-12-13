@@ -1,0 +1,98 @@
+@import "./variables.css";
+
+.Login-card {
+
+    justify-content: center;
+    width: 30%;
+    /* height: 85vh; */
+    margin-left: 35%;
+    margin-top: 3.5%;
+    align-items: center;
+    background: var(--primaryColor) 0% 0% no-repeat;
+    box-shadow: 0px 0px 30px #3E8BE21A;
+    border: 0.20000000298023224px solid #3E8BE21A;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+.Login-title {
+    margin: 5%;
+    /* width: 534px; */
+    /* height: 155px; */
+    opacity: 1;
+
+}
+
+.Login-title>p {
+    padding-top: 5%;
+    /* position: absolute; */
+    top: 50%;
+    /* -ms-transform: translateY(-50%); */
+    /* transform: translateY(-50%); */
+    font-style: normal normal Poppins;
+    font-weight: 600;
+    font-size: xx-large;
+    letter-spacing: 0px;
+    color: #3E8BE2;
+    opacity: 1;
+}
+
+.Form-card {
+    width: 80%;
+    justify-content: center;
+    margin: 10%;
+}
+
+.icon-left {
+    float: left;
+    margin-left: 8px;
+    margin-top: -27px;
+    vertical-align: middle;
+    /* position: relative; */
+    z-index: 2;
+    color: #3E8BE2;
+}
+
+.icon-right {
+    float: right;
+    margin-right: 8px;
+    margin-top: -27px;
+    vertical-align: middle;
+    /* position: relative; */
+    z-index: 2;
+    color: #707070;
+    opacity: .5;
+}
+
+.LoginForminput {
+    border-radius: 10px !important;
+    opacity: 1;
+    border: 1px solid #3E8BE2 !important;
+}
+
+
+.Login-button {
+    top: 730px;
+    left: 801px;
+    width: 320px;
+    height: 65px;
+    background: transparent 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+/* Responsive section for different screen size */
+/* Tablet */
+@media screen and (max-width:600px) {
+    .Login-card {
+        width: auto;
+        margin-left: auto;
+    }
+
+    .login-form {
+        width: 100%
+    }
+
+    .login-card {
+        height: auto;
+    }
+}

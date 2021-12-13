@@ -1,0 +1,144 @@
+@import "./variables.css";
+
+.react-bootstrap-table thead {
+  /* position: sticky;  */
+  /* top: 0;  */
+  background-color: var(--iconBackgrounColor);
+
+  /* z-index: 1021;  */
+}
+
+#myInput {
+  /* border-radius: 15px; */
+  /* width: auto; */
+  height: 50%;
+  margin-bottom: 3%;
+  border-color: none;
+  border-width: 0ch;
+  color: var(--primaryColor);
+  background: #bbbbbb 0% 0% no-repeat padding-box;
+}
+
+#myInput :active {
+  background: none;
+  background-color: var(--iconBackgrounColor);
+}
+
+/* ul.pagination {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  margin-top:3%; */
+/* margin-left:40% */
+/* } */
+/* ul.pagination li {display: inline;}
+ul.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+} */
+.refreshButton {
+  height: 40px;
+  width: 40px;
+  float: right;
+  color: var(--iconBackgrounColor);
+
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.refreshButton :hover {
+  color: #73a7e2;
+  cursor: pointer;
+}
+
+/* ul.pagination li.active {
+  background-color: var(--iconBackgrounColor);
+  border-radius: 5px;
+  color: white;
+} */
+/* ul.pagination li:hover:not(.active) {
+  background-color: #c4dcf8;
+  border-radius: 5px;
+} */
+
+/* dropdown */
+.multiselect {
+  width: auto;
+}
+
+.selectBox {
+  position: relative;
+  border-color: var(--iconBackgrounColor) !important;
+  color: var(--iconBackgrounColor);
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-color: var(--iconBackgrounColor) !important;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: var(--iconBackgrounColor);
+}
+
+/* changes 02/12/2021 */
+/* .Main_outer_div {
+  width: 80% !important;
+  margin-top: 9%;
+  margin-left: 16%;
+} */
+
+/* media query */
+.Main_outer_div {
+  margin-top: 9%;
+  margin-left: 18%;
+}
+
+/* updated css  02-11-2021 */
+
+.filter_row {
+  display: flex !important;
+  align-items: bottom !important;
+}
+
+/* todo: neeraj 05-12-2021 if date data is empty in both end and start */
+.dateempty {
+  border: red 2px solid !important;
+  transition-duration: 0.5s;
+}
+
+/* custome table */
+
+/* .react-bootstrap-table{
+  overflow-x: scroll;
+  
+} */
+
+th {
+  color: #fff;
+}
+
+.btn {
+  color: white !important;
+  font-weight: 400;
+}

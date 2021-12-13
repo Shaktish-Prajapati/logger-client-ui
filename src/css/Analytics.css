@@ -1,0 +1,48 @@
+.analyticsPieChart{
+     /* border: none; */
+     border-radius: 10px;
+     width: 90% !important;
+     /* height: 85% !important; */
+     height: 15rem;
+     border-radius: 1rem !important;
+     margin-top:10%;
+     /* margin-bottom: 50px; */
+     box-shadow: 2px 2px 10px grey;
+     
+     
+     /* display: flex; */
+     justify-content: center;
+}
+
+.roww {
+    margin-top: 5%;
+    /* margin-bottom: 2%; */
+}
+
+.analyticsFillChart {
+    /* border: none; */
+    border-radius: 10px;
+    width: 85% !important;
+    /* height: 85% !important; */
+    /* height: 15rem; */
+    border-radius: 1rem !important;
+    /* margin-top:10%; */
+    /* margin-bottom: 50px; */
+    box-shadow: 2px 2px 10px grey;
+    
+    
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
+@import "./variables.css";
+.analyticsSmallButton {
+    border-radius: 10px;
+    width: 90% !important;
+    border-radius: 1rem !important;
+    height: 6rem;
+    /* margin-bottom: 50px; */
+    box-shadow: 2px 2px 10px grey;
+    /* display: flex; */
+    justify-content: center;
+}
