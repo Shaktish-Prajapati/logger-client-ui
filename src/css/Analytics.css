@@ -1,48 +1,79 @@
-.analyticsPieChart{
-     /* border: none; */
-     border-radius: 10px;
-     width: 90% !important;
-     /* height: 85% !important; */
-     height: 15rem;
-     border-radius: 1rem !important;
-     margin-top:10%;
-     /* margin-bottom: 50px; */
-     box-shadow: 2px 2px 10px grey;
-     
-     
-     /* display: flex; */
-     justify-content: center;
+.analyticsPieChart {
+  /* border: none; */
+  border-radius: 10px;
+  width: 90% !important;
+  /* height: 85% !important; */
+  height: 15rem;
+  border-radius: 1rem !important;
+  margin-top: 10%;
+  /* margin-bottom: 50px; */
+  box-shadow: 2px 2px 10px grey;
+
+  /* display: flex; */
+  justify-content: center;
 }
 
 .roww {
-    margin-top: 5%;
-    /* margin-bottom: 2%; */
+  margin-top: 5%;
+  /* margin-bottom: 2%; */
 }
 
 .analyticsFillChart {
-    /* border: none; */
-    border-radius: 10px;
-    width: 85% !important;
-    /* height: 85% !important; */
-    /* height: 15rem; */
-    border-radius: 1rem !important;
-    /* margin-top:10%; */
-    /* margin-bottom: 50px; */
-    box-shadow: 2px 2px 10px grey;
-    
-    
-    /* display: flex; */
-    /* justify-content: center; */
+  /* border: none; */
+  border-radius: 10px;
+  width: 85% !important;
+  /* height: 85% !important; */
+  /* height: 15rem; */
+  border-radius: 1rem !important;
+  /* margin-top:10%; */
+  /* margin-bottom: 50px; */
+  box-shadow: 2px 2px 10px grey;
+
+  /* display: flex; */
+  /* justify-content: center; */
 }
 
 @import "./variables.css";
 .analyticsSmallButton {
-    border-radius: 10px;
-    width: 90% !important;
-    border-radius: 1rem !important;
-    height: 6rem;
-    /* margin-bottom: 50px; */
-    box-shadow: 2px 2px 10px grey;
-    /* display: flex; */
-    justify-content: center;
+  border-radius: 10px;
+  width: 90% !important;
+  border-radius: 1rem !important;
+  height: 6rem;
+  /* margin-bottom: 50px; */
+  box-shadow: 2px 2px 10px grey;
+  /* display: flex; */
+  justify-content: center;
+}
+
+.outer-data-sec {
+  margin-top: 40px !important;
+}
+
+.outer-data-sec span {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a83ff;
+}
+
+.inner-sec-status {
+  display: flex !important;
+  align-items: center;
+}
+
+.status-active {
+  margin-top: -8px;
+  margin-left: 4px;
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #1a83ff !important;
+  border-radius: 1rem !important;
+}
+
+.status-inactive {
+  margin-top: -8px;
+  margin-left: 4px;
+  width: 10px !important;
+  height: 10px !important;
+  background-color: red;
+  border-radius: 1rem !important;
 }

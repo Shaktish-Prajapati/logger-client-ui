@@ -98,15 +98,40 @@ function Analytics() {
                 </Col>
               </Row>
             </Col>
-            <Col style={{ marginTop: "130px" }}>
-              <Card style={{ height: "600px" }}>
-                <Card.Body>
-                  <Card.Title>data card</Card.Title>
-                  <Card.Text>data</Card.Text>
-                  <Card.Text>data</Card.Text>
-                  <Card.Text>data</Card.Text>
-                </Card.Body>
-              </Card>
+            <Col
+              style={{
+                marginTop: "130px",
+                borderRadius: "1rem",
+                boxShadow: "2px 2px 10px grey",
+                height: "500px",
+                padding: "40px",
+              }}
+            >
+              <div>
+                <div className="outer-data-sec">
+                  <div className="inner-sec-status">
+                    <p>Status</p>
+                    <p
+                      className={true ? "status-active" : "status-inactive"}
+                    ></p>
+                  </div>
+                </div>
+                <div className="outer-data-sec">
+                  <p>
+                    Project creation date :<span>Monday, 13 December 2021</span>
+                  </p>
+                </div>
+                <div className="outer-data-sec">
+                  <p>
+                    Total number of devices connected :<span>14</span>
+                  </p>
+                </div>
+                <div className="outer-data-sec">
+                  <p>
+                    Number of models :<span>06</span>
+                  </p>
+                </div>
+              </div>
             </Col>
           </Row>
           <Container>
