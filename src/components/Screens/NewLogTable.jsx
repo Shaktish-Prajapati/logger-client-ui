@@ -292,8 +292,6 @@ const NewLogTable = () => {
     clickToSelect: true,
   };
 
-  console.log("state data ref", startDateRef.current.value);
-
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
@@ -314,8 +312,8 @@ const NewLogTable = () => {
                 </label>
                 <input
                   type="date"
-                  value={date.start}
                   ref={startDateRef}
+                  value={date.start}
                   onChange={(e) => setDate({ ...date, start: e.target.value })}
                   className={
                     emptyDate ? "dateempty form-control" : "form-control"
@@ -323,7 +321,6 @@ const NewLogTable = () => {
                   style={{
                     color: "#3E8BE2",
                     fontWeight: "bold",
-                    float: "left",
                   }}
                 />
               </Col>
@@ -335,7 +332,7 @@ const NewLogTable = () => {
                     float: "left",
                   }}
                 >
-                  End date 
+                  End date
                 </label>
                 <input
                   type="date"
@@ -563,7 +560,6 @@ const NewLogTable = () => {
                           <Col>
                             <Row>
                               <Col>
-                                
                                 <SearchBar
                                   style={{ width: "100%", display: "block" }}
                                   {...props.searchProps}
