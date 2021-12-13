@@ -310,7 +310,7 @@ const NewLogTable = () => {
                     float: "left",
                   }}
                 >
-                  Start date{" "}
+                  Start date
                 </label>
                 <input
                   type="date"
@@ -335,7 +335,7 @@ const NewLogTable = () => {
                     float: "left",
                   }}
                 >
-                  End date{" "} 
+                  End date 
                 </label>
                 <input
                   type="date"
@@ -563,7 +563,7 @@ const NewLogTable = () => {
                           <Col>
                             <Row>
                               <Col>
-                                {" "}
+                                
                                 <SearchBar
                                   style={{ width: "100%", display: "block" }}
                                   {...props.searchProps}

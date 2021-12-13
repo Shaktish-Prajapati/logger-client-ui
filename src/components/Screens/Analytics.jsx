@@ -110,10 +110,9 @@ function Analytics() {
               <div>
                 <div className="outer-data-sec">
                   <div className="inner-sec-status">
-                    <p>Status</p>
-                    <p
-                      className={true ? "status-active" : "status-inactive"}
-                    ></p>
+                    <p>
+                      Status :<span> {true ? "Active" : "Inactive"}</span>
+                    </p>
                   </div>
                 </div>
                 <div className="outer-data-sec">
