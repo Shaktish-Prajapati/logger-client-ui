@@ -152,8 +152,8 @@ const NewLogTable = () => {
   const [record, setRecords] = useState(25);
   const [emptyDate, setEmptyDate] = useState(false);
 
-  const startDateRef = useRef(null);
-  const endDatRef = useRef(null);
+  const startDateRef = useRef("");
+  const endDatRef = useRef("");
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -192,8 +192,6 @@ const NewLogTable = () => {
   };
 
   const resetFilter = () => {
-    startDateRef.current.value = "";
-    endDatRef.current.value = "";
     setDate("");
     setPageNo(0);
     setLogType({
@@ -203,6 +201,8 @@ const NewLogTable = () => {
       debug: false,
       verbose: false,
     });
+    startDateRef.current.value = "";
+    endDatRef.current.value = "";
     // setLogType({...logType})
     dispatch(getProjectByCode(code, record));
   };
@@ -292,6 +292,8 @@ const NewLogTable = () => {
     clickToSelect: true,
   };
 
+  console.log("state data ref", startDateRef.current.value);
+
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
@@ -312,8 +314,8 @@ const NewLogTable = () => {
                 </label>
                 <input
                   type="date"
-                  ref={startDateRef}
                   value={date.start}
+                  ref={startDateRef}
                   onChange={(e) => setDate({ ...date, start: e.target.value })}
                   className={
                     emptyDate ? "dateempty form-control" : "form-control"
@@ -333,7 +335,7 @@ const NewLogTable = () => {
                     float: "left",
                   }}
                 >
-                  End date{" "}
+                  End date{" "} 
                 </label>
                 <input
                   type="date"

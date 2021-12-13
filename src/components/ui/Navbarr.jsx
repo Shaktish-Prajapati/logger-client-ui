@@ -134,9 +134,7 @@ const Navbarr = (props) => {
                     marginRight: "10px",
                   }}
                 >
-                  <FontAwesomeIcon
-                    icon={props.navbardetails.link1.iconName}
-                  />
+                  <FontAwesomeIcon icon={props.navbardetails.link1.iconName} />
                 </section>
 
                 {props.navbardetails.link1.linkName}
@@ -169,9 +167,7 @@ const Navbarr = (props) => {
                     marginRight: "10px",
                   }}
                 >
-                  <FontAwesomeIcon
-                    icon={props.navbardetails.link2.iconName}
-                  />{" "}
+                  <FontAwesomeIcon icon={props.navbardetails.link2.iconName} />{" "}
                 </section>
                 {props.navbardetails.link2.linkName}{" "}
               </Link>
