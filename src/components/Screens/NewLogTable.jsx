@@ -297,7 +297,248 @@ const NewLogTable = () => {
       <Navbarr navbardetails={navbardetail} />
       // 1) before table loading contents here not to load on when filtering
       <Container>
-        <div style={{ marginTop: "6%", width: "84%", float: "right" }}>
+        <div style={{ marginTop: "9%", width: "84%", float: "right" }}>
+          <Row>
+            <Col>
+              <Col xl={12}>
+                <label
+                  style={{
+                    color: "#3E8BE2",
+                    fontWeight: "bold",
+                    float: "left",
+                  }}
+                >
+                  Start date{" "}
+                </label>
+                <input
+                  type="date"
+                  ref={startDateRef}
+                  value={date.start}
+                  onChange={(e) => setDate({ ...date, start: e.target.value })}
+                  className={
+                    emptyDate ? "dateempty form-control" : "form-control"
+                  }
+                  style={{
+                    color: "#3E8BE2",
+                    fontWeight: "bold",
+                    float: "left",
+                  }}
+                />
+              </Col>
+              <Col xl={12}>
+                <label
+                  style={{
+                    color: "#3E8BE2",
+                    fontWeight: "bold",
+                    float: "left",
+                  }}
+                >
+                  End date{" "}
+                </label>
+                <input
+                  type="date"
+                  ref={endDatRef}
+                  max={Date.now()}
+                  value={date.end}
+                  onChange={(e) => setDate({ ...date, end: e.target.value })}
+                  className={
+                    emptyDate ? "dateempty form-control" : "form-control"
+                  }
+                  style={{
+                    color: "#3E8BE2",
+                    fontWeight: "bold",
+                  }}
+                />
+                <Row className="mt-3">
+                  <Col>
+                    <button
+                      type="button"
+                      onClick={filterOnDate}
+                      className="btn btn-primary"
+                    >
+                      Apply date
+                    </button>
+                  </Col>
+                </Row>
+              </Col>
+            </Col>
+            <Col
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Row>
+                <Col lg={12}>
+                  <div className="pagesOption" style={{ marginTop: "33px" }}>
+                    <div
+                      className="selectBox pagesOption"
+                      /* style={{borderColor:'#3E8BE2', justifyContent:'center', alignItems:'center', display:'flex'}} */ onClick={
+                        showCheckboxes
+                      }
+                    >
+                      <select
+                        style={{
+                          borderColor: "#3E8BE2",
+                          background: "none",
+                          color: "#3E8BE2",
+                          /* marginTop:'12%', */ borderRadius: "5px",
+                          height: "35px",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <option>Select an option</option>
+                      </select>
+                      <div className="overSelect"></div>
+                    </div>
+                    <div
+                      id="checkboxes"
+                      style={{
+                        borderColor: "#3E8BE2",
+                        background: "none",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <label for="debug" style={{ color: "#3E8BE2" }}>
+                        <input
+                          type="checkbox"
+                          style={{ color: "#3E8BE2" }}
+                          id="debug"
+                          checked={logType.debug}
+                          onClick={(e) => {
+                            setLogType({
+                              ...logType,
+                              debug: !logType.debug,
+                            });
+                          }}
+                        />
+                        Debug
+                      </label>
+                      <label for="warn" style={{ color: "#3E8BE2" }}>
+                        <input
+                          type="checkbox"
+                          id="warn"
+                          checked={logType.warn}
+                          onClick={(e) => {
+                            setLogType({
+                              ...logType,
+                              warn: !logType.warn,
+                            });
+                          }}
+                        />
+                        Warn
+                      </label>
+                      <label for="info" style={{ color: "#3E8BE2" }}>
+                        <input
+                          type="checkbox"
+                          id="info"
+                          checked={logType.info}
+                          onClick={(e) => {
+                            setLogType({
+                              ...logType,
+                              info: !logType.info,
+                            });
+                          }}
+                        />
+                        Info
+                      </label>
+                      <label for="error" style={{ color: "#3E8BE2" }}>
+                        <input
+                          type="checkbox"
+                          id="error"
+                          checked={logType.error}
+                          onClick={(e) => {
+                            setLogType({
+                              ...logType,
+                              error: !logType.error,
+                            });
+                          }}
+                        />
+                        Error
+                      </label>
+                    </div>
+                  </div>
+                </Col>
+
+                <Col lg={12}>
+                  <Row className="mt-3">
+                    <Col>
+                      <button
+                        type="button"
+                        onClick={resetFilter}
+                        className="btn btn-primary"
+                      >
+                        Reset Filter
+                      </button>
+                    </Col>
+                    <Col>
+                      <button type="button" className="btn btn-primary">
+                        Save Filter
+                      </button>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+            </Col>
+            <Col>
+              <div className="col pagesOption" style={{ marginTop: "35px" }}>
+                <div className="pagesOption">
+                  <div className="pagesOption">
+                    <label for="10" style={{ color: "#3E8BE2" }}>
+                      <input
+                        type="checkbox"
+                        style={{ color: "#3E8BE2" }}
+                        id="10"
+                        checked={record === 10}
+                        onClick={(e) => {
+                          setRecords(10);
+                        }}
+                      />
+                      10
+                    </label>
+                    <label for="25" style={{ color: "#3E8BE2" }}>
+                      <input
+                        type="checkbox"
+                        id="25"
+                        checked={record === 25}
+                        onClick={(e) => {
+                          setRecords(25);
+                        }}
+                      />
+                      25
+                    </label>
+                    <label for="50" style={{ color: "#3E8BE2" }}>
+                      <input
+                        type="checkbox"
+                        id="50"
+                        checked={record === 50}
+                        onClick={(e) => {
+                          setRecords(50);
+                        }}
+                      />
+                      50
+                    </label>
+                    <label for="100" style={{ color: "#3E8BE2" }}>
+                      <input
+                        type="checkbox"
+                        id="100"
+                        checked={record === 100}
+                        onClick={(e) => {
+                          setRecords(100);
+                        }}
+                      />
+                      100
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </Container>
+      <Container>
+        <div style={{ marginTop: "4%", width: "84%", float: "right" }}>
           {loading ? (
             <SpinLoader />
           ) : (
@@ -314,323 +555,50 @@ const NewLogTable = () => {
                   search
                 >
                   {(props) => (
-                    <div className="logtableStyle" className="mt-5">
-                      <Row>
-                        <Col>
-                          {" "}
-                          <SearchBar
-                            style={{ width: "40%", display: "block" }}
-                            {...props.searchProps}
-                            placeholder="Enter filter..."
-                          />
-                        </Col>
-                        <Col>
-                          {" "}
-                          <IoIcons.IoIosRefreshCircle
-                            onClick={refreshButton}
-                            className="refreshButton"
-                          />
-                        </Col>
-                      </Row>
+                    <Container>
+                      <div className="logtableStyle">
+                        <Row>
+                          <Col>
+                            <Row>
+                              <Col>
+                                {" "}
+                                <SearchBar
+                                  style={{ width: "100%", display: "block" }}
+                                  {...props.searchProps}
+                                  placeholder="Enter filter..."
+                                />
+                              </Col>
+                              <Col>
+                                <ExportCSVButton {...props.csvProps}>
+                                  Export CSV
+                                </ExportCSVButton>
+                              </Col>
+                            </Row>
+                          </Col>
 
-                      <div className="row">
-                        <Col>
-                          <Row>
-                            <Col xl={12}>
-                              {" "}
-                              <label
-                                style={{
-                                  color: "#3E8BE2",
-                                  fontWeight: "bold",
-                                  float: "left",
-                                }}
-                              >
-                                Start date{" "}
-                              </label>
-                              <input
-                                type="date"
-                                ref={startDateRef}
-                                value={date.start}
-                                onChange={(e) =>
-                                  setDate({ ...date, start: e.target.value })
-                                }
-                                className={
-                                  emptyDate
-                                    ? "dateempty form-control"
-                                    : "form-control"
-                                }
-                                style={{
-                                  color: "#3E8BE2",
-                                  fontWeight: "bold",
-                                  float: "left",
-                                }}
-                              />
-                            </Col>
-                            <Col xl={12}>
-                              {" "}
-                              <label
-                                style={{
-                                  color: "#3E8BE2",
-                                  fontWeight: "bold",
-                                  float: "left",
-                                }}
-                              >
-                                End date{" "}
-                              </label>
-                              <input
-                                type="date"
-                                ref={endDatRef}
-                                max={Date.now()}
-                                value={date.end}
-                                onChange={(e) =>
-                                  setDate({ ...date, end: e.target.value })
-                                }
-                                className={
-                                  emptyDate
-                                    ? "dateempty form-control"
-                                    : "form-control"
-                                }
-                                style={{
-                                  color: "#3E8BE2",
-                                  fontWeight: "bold",
-                                  float: "left",
-                                }}
-                              />
-                            </Col>
-                            <Col className="mt-3">
-                              <Row className="text-center">
-                                <Col>
-                                  <button
-                                    type="button"
-                                    onClick={filterOnDate}
-                                    className="btn btn-primary"
-                                  >
-                                    Apply date
-                                  </button>
-                                </Col>
-                                <Col>
-                                  <ExportCSVButton {...props.csvProps}>
-                                    Export CSV
-                                  </ExportCSVButton>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        </Col>
+                          <Col>
+                            <IoIcons.IoIosRefreshCircle
+                              onClick={refreshButton}
+                              className="refreshButton"
+                            />
+                          </Col>
+                        </Row>
 
-                        <div
-                          className="col "
-                          style={{
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <Row>
-                            <Col lg={12}>
-                              <div
-                                className="pagesOption"
-                                style={{ marginTop: "33px" }}
-                              >
-                                <div
-                                  className="selectBox pagesOption"
-                                  /* style={{borderColor:'#3E8BE2', justifyContent:'center', alignItems:'center', display:'flex'}} */ onClick={
-                                    showCheckboxes
-                                  }
-                                >
-                                  <select
-                                    style={{
-                                      borderColor: "#3E8BE2",
-                                      background: "none",
-                                      color: "#3E8BE2",
-                                      /* marginTop:'12%', */ borderRadius:
-                                        "5px",
-                                      height: "35px",
-                                      justifyContent: "center",
-                                      alignItems: "center",
-                                    }}
-                                  >
-                                    <option>Select an option</option>
-                                  </select>
-                                  <div className="overSelect"></div>
-                                </div>
-                                <div
-                                  id="checkboxes"
-                                  style={{
-                                    borderColor: "#3E8BE2",
-                                    background: "none",
-                                    borderRadius: "5px",
-                                  }}
-                                >
-                                  <label
-                                    for="debug"
-                                    style={{ color: "#3E8BE2" }}
-                                  >
-                                    <input
-                                      type="checkbox"
-                                      style={{ color: "#3E8BE2" }}
-                                      id="debug"
-                                      checked={logType.debug}
-                                      onClick={(e) => {
-                                        setLogType({
-                                          ...logType,
-                                          debug: !logType.debug,
-                                        });
-                                      }}
-                                    />
-                                    Debug
-                                  </label>
-                                  <label
-                                    for="warn"
-                                    style={{ color: "#3E8BE2" }}
-                                  >
-                                    <input
-                                      type="checkbox"
-                                      id="warn"
-                                      checked={logType.warn}
-                                      onClick={(e) => {
-                                        setLogType({
-                                          ...logType,
-                                          warn: !logType.warn,
-                                        });
-                                      }}
-                                    />
-                                    Warn
-                                  </label>
-                                  <label
-                                    for="info"
-                                    style={{ color: "#3E8BE2" }}
-                                  >
-                                    <input
-                                      type="checkbox"
-                                      id="info"
-                                      checked={logType.info}
-                                      onClick={(e) => {
-                                        setLogType({
-                                          ...logType,
-                                          info: !logType.info,
-                                        });
-                                      }}
-                                    />
-                                    Info
-                                  </label>
-                                  <label
-                                    for="error"
-                                    style={{ color: "#3E8BE2" }}
-                                  >
-                                    <input
-                                      type="checkbox"
-                                      id="error"
-                                      checked={logType.error}
-                                      onClick={(e) => {
-                                        setLogType({
-                                          ...logType,
-                                          error: !logType.error,
-                                        });
-                                      }}
-                                    />
-                                    Error
-                                  </label>
-                                </div>
-                              </div>
-                            </Col>
-
-                            <Col lg={12}>
-                              <Row className="mt-3">
-                                <Col>
-                                  <button
-                                    type="button"
-                                    onClick={resetFilter}
-                                    className="btn btn-primary"
-                                  >
-                                    Reset Filter
-                                  </button>
-                                </Col>
-                                <Col>
-                                  <button
-                                    type="button"
-                                    onClick={resetFilter}
-                                    className="btn btn-primary"
-                                  >
-                                    Save Filter
-                                  </button>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        </div>
-
-                        <Col>
-                          <div
-                            className="col pagesOption"
-                            style={{ marginTop: "35px" }}
-                          >
-                            <div className="pagesOption">
-                              <div className="pagesOption">
-                                <label for="10" style={{ color: "#3E8BE2" }}>
-                                  <input
-                                    type="checkbox"
-                                    style={{ color: "#3E8BE2" }}
-                                    id="10"
-                                    checked={record === 10}
-                                    onClick={(e) => {
-                                      setRecords(10);
-                                    }}
-                                  />
-                                  10
-                                </label>
-                                <label for="25" style={{ color: "#3E8BE2" }}>
-                                  <input
-                                    type="checkbox"
-                                    id="25"
-                                    checked={record === 25}
-                                    onClick={(e) => {
-                                      setRecords(25);
-                                    }}
-                                  />
-                                  25
-                                </label>
-                                <label for="50" style={{ color: "#3E8BE2" }}>
-                                  <input
-                                    type="checkbox"
-                                    id="50"
-                                    checked={record === 50}
-                                    onClick={(e) => {
-                                      setRecords(50);
-                                    }}
-                                  />
-                                  50
-                                </label>
-                                <label for="100" style={{ color: "#3E8BE2" }}>
-                                  <input
-                                    type="checkbox"
-                                    id="100"
-                                    checked={record === 100}
-                                    onClick={(e) => {
-                                      setRecords(100);
-                                    }}
-                                  />
-                                  100
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </Col>
+                        <p className="mt-2"></p>
+                        <BootstrapTable
+                          selectRow={selectRow}
+                          filter={filterFactory()}
+                          {...props.baseProps}
+                          noDataIndication="No data found"
+                          // pagination={ paginationFactory({
+                          //   // custom: true,
+                          //   sizePerPage:25,
+                          //   totalSize: data.data.logs.length
+                          // })
+                          // }
+                        />
                       </div>
-
-                      <p className="mt-2"></p>
-                      <BootstrapTable
-                        selectRow={selectRow}
-                        filter={filterFactory()}
-                        {...props.baseProps}
-                        noDataIndication="No data found"
-                        // pagination={ paginationFactory({
-                        //   // custom: true,
-                        //   sizePerPage:25,
-                        //   totalSize: data.data.logs.length
-                        // })
-                        // }
-                      />
-                    </div>
+                    </Container>
                   )}
                 </ToolkitProvider>
               ) : (

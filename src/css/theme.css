@@ -1,18 +1,17 @@
 @import url("./variables.css");
 
 .btn {
-    background-color: var(--iconBackgrounColor) !important;
+  background-color: var(--iconBackgrounColor) !important;
 }
 
 .btn {
-    border: none !important;
+  border: none !important;
 }
 
 .card {
-    border: none !important;
+  border: none !important;
 }
 
-
 table thead {
-    background-color: var(--iconBackgrounColor) !important;
+  background-color: var(--iconBackgrounColor) !important;
 }
