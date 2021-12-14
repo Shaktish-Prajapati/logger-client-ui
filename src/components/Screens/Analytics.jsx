@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { faDatabase, faChartPie } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDatabase,
+  faChartPie,
+  faFontAwesomeLogoFull,
+} from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getLogTypeCounts,
@@ -25,7 +29,7 @@ import PieCharts from "../utils/PieChart";
 import LineGraphs from "../utils/LineGraphs";
 import DonutChart from "../utils/DonutChart";
 import { Button } from "bootstrap";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Analytics() {
   const [date, setdate] = useState({
     start: null,
@@ -74,12 +78,13 @@ function Analytics() {
   useEffect(() => {
     dispatchmultiple();
   }, [date]);
+
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
 
       <Container>
-        <div style={{ marginTop: "4%", width: "84%", float: "right" }}>
+        <div style={{ marginTop: "9%", width: "84%", float: "right" }}>
           <Row>
             <Col className="" style={{ width: "420px" }}>
               <Row>
@@ -100,37 +105,115 @@ function Analytics() {
             </Col>
             <Col
               style={{
-                marginTop: "130px",
+                marginTop: "235px",
                 borderRadius: "1rem",
                 boxShadow: "2px 2px 10px grey",
-                height: "500px",
-                padding: "40px",
+                height: "400px",
+                paddingLeft: "25px",
+                paddingRight: "25px",
+
+                backgroundColor: "#1a83ff",
               }}
             >
-              <div>
-                <div className="outer-data-sec">
-                  <div className="inner-sec-status">
-                    <p>
-                      Status :<span> {true ? "Active" : "Inactive"}</span>
+              <Row className="mt-5">
+                <Col>
+                  <p style={{ color: "#fff" }}>Status :</p>
+                </Col>
+                <Col>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <p
+                      className="Active"
+                      style={{
+                        color: "#fff",
+                        fontSize: "1.4rem",
+                        fontWeight: "600",
+                      }}
+                    >
+                      Active
                     </p>
+                    <div className="Active-badge"></div>
                   </div>
-                </div>
-                <div className="outer-data-sec">
-                  <p>
-                    Project creation date :<span>Monday, 13 December 2021</span>
+                </Col>
+              </Row>
+
+              <Row className="mt-2">
+                <Col>
+                  <p style={{ color: "#fff" }}>Project creation date :</p>
+                </Col>
+                <Col>
+                  <span
+                    style={{
+                      color: "#fff",
+                      fontSize: "1.4rem",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Monday, 13 December 2021
+                  </span>
+                </Col>
+              </Row>
+
+              <Row className="mt-2">
+                <Col>
+                  <p style={{ color: "#fff" }}>Total devices connected :</p>
+                </Col>
+                <Col>
+                  <span
+                    style={{
+                      color: "#fff",
+                      fontSize: "1.4rem",
+                      fontWeight: "600",
+                    }}
+                  >
+                    14
+                  </span>
+                </Col>
+              </Row>
+
+              <Row className="mt-2">
+                <Col>
+                  <p style={{ color: "#fff" }}>Number of models :</p>
+                </Col>
+                <Col>
+                  <span
+                    style={{
+                      color: "#fff",
+                      fontSize: "1.4rem",
+                      fontWeight: "600",
+                    }}
+                  >
+                    06
+                  </span>
+                </Col>
+              </Row>
+
+              <Row className="mt-2">
+                <Col>
+                  <p style={{ color: "#fff" }}>
+                    <p style={{ color: "#fff" }}>Models :</p>
                   </p>
-                </div>
-                <div className="outer-data-sec">
-                  <p>
-                    Total number of devices connected :<span>14</span>
-                  </p>
-                </div>
-                <div className="outer-data-sec">
-                  <p>
-                    Number of models :<span>06</span>
-                  </p>
-                </div>
-              </div>
+                </Col>
+                <Col>
+                  <span
+                    style={{
+                      color: "#fff",
+                      fontSize: "1.4rem",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Agva Pro
+                  </span>
+                  <span
+                    style={{
+                      color: "#fff",
+                      fontSize: "1.4rem",
+                      fontWeight: "600",
+                    }}
+                  >
+                    , Agva Advanced
+                  </span>
+                </Col>
+              </Row>
             </Col>
           </Row>
           <Container>

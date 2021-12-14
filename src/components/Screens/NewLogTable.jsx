@@ -8,7 +8,7 @@ import filterFactory, {
   textFilter,
 } from "react-bootstrap-table2-filter";
 import {
-  faHome,
+  faDatabase,
   faWrench,
   faCopy,
   faPlus,
@@ -222,7 +222,7 @@ const NewLogTable = () => {
     name: projectName,
     dashName: projectName,
     link1: {
-      iconName: faHome,
+      iconName: faDatabase,
       linkName: "Logs",
       link: `/newlogTable?code=${code}&name=${projectName}`,
     },

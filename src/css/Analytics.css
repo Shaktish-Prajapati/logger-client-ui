@@ -45,35 +45,26 @@
   justify-content: center;
 }
 
-.outer-data-sec {
-  margin-top: 40px !important;
-}
-
-.outer-data-sec span {
-  font-size: 1.6rem;
-  font-weight: 700;
+.Active {
   color: #1a83ff;
 }
-
-.inner-sec-status {
-  display: flex !important;
-  align-items: center;
+.Inactive {
+  color: rgb(255, 0, 0) !important;
 }
-
-.status-active {
-  margin-top: -8px;
-  margin-left: 4px;
-  width: 10px !important;
-  height: 10px !important;
-  background-color: #1a83ff !important;
+.Active-badge {
+  width: 12px !important;
+  height: 12px !important;
+  margin-left: 6px;
+  margin-top: -18px;
+  background-color: rgb(160, 255, 160);
   border-radius: 1rem !important;
 }
 
-.status-inactive {
-  margin-top: -8px;
-  margin-left: 4px;
-  width: 10px !important;
-  height: 10px !important;
-  background-color: red;
+.InActive-badge {
+  width: 12px !important;
+  height: 12px !important;
+  margin-left: 6px;
+  margin-top: -18px;
+  background-color: rgb(255, 0, 0);
   border-radius: 1rem !important;
 }
