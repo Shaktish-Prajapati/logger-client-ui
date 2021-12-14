@@ -8,7 +8,7 @@ import filterFactory, {
   textFilter,
 } from "react-bootstrap-table2-filter";
 import {
-  faHome,
+  faDatabase,
   faWrench,
   faCopy,
   faPlus,
@@ -246,7 +246,7 @@ const NewLogTable = () => {
     name: projectName,
     dashName: projectName,
     link1: {
-      iconName: faHome,
+      iconName: faDatabase,
       linkName: "Logs",
       link: `/newlogTable?code=${code}&name=${projectName}`,
     },
@@ -340,6 +340,7 @@ const NewLogTable = () => {
                 <Col xl={12}>
                   {" "}
                   <label
+                    className="p-1"
                     style={{
                       color: "#3E8BE2",
                       fontWeight: "bold",
@@ -368,6 +369,7 @@ const NewLogTable = () => {
                 <Col xl={12}>
                   {" "}
                   <label
+                    className="p-1"
                     style={{
                       color: "#3E8BE2",
                       fontWeight: "bold",
@@ -451,7 +453,11 @@ const NewLogTable = () => {
                         borderRadius: "5px",
                       }}
                     >
-                      <label for="debug" style={{ color: "#3E8BE2" }}>
+                      <label
+                        className="p-1"
+                        for="debug"
+                        style={{ color: "#3E8BE2" }}
+                      >
                         <input
                           type="checkbox"
                           style={{ color: "#3E8BE2" }}
@@ -466,7 +472,11 @@ const NewLogTable = () => {
                         />
                         Debug
                       </label>
-                      <label for="warn" style={{ color: "#3E8BE2" }}>
+                      <label
+                        className="p-1"
+                        for="warn"
+                        style={{ color: "#3E8BE2" }}
+                      >
                         <input
                           type="checkbox"
                           id="warn"
@@ -480,7 +490,11 @@ const NewLogTable = () => {
                         />
                         Warn
                       </label>
-                      <label for="info" style={{ color: "#3E8BE2" }}>
+                      <label
+                        className="p-1"
+                        for="info"
+                        style={{ color: "#3E8BE2" }}
+                      >
                         <input
                           type="checkbox"
                           id="info"
@@ -494,7 +508,11 @@ const NewLogTable = () => {
                         />
                         Info
                       </label>
-                      <label for="error" style={{ color: "#3E8BE2" }}>
+                      <label
+                        className="p-1"
+                        for="error"
+                        style={{ color: "#3E8BE2" }}
+                      >
                         <input
                           type="checkbox"
                           id="error"
@@ -511,7 +529,7 @@ const NewLogTable = () => {
                     </div>
                   </div>
                 </Col>
-                <Col className="mt-3">
+                <Col className="mt-4">
                   <button
                     type="button"
                     onClick={resetFilter}
@@ -524,6 +542,19 @@ const NewLogTable = () => {
                     Reset Filter
                   </button>
                 </Col>
+                <Col className="mt-4">
+                  <button
+                    type="button"
+                    onClick={saveSearch}
+                    style={{
+                      background: "#3E8BE2",
+                      fontWeight: "bold",
+                    }}
+                    className="btn btn-primary"
+                  >
+                    Save filter
+                  </button>
+                </Col>
               </Row>
             </div>
 
@@ -531,7 +562,11 @@ const NewLogTable = () => {
               <div className="col pagesOption" style={{ marginTop: "35px" }}>
                 <div className="pagesOption">
                   <div className="pagesOption">
-                    <label for="10" style={{ color: "#3E8BE2" }}>
+                    <label
+                      className="p-1"
+                      for="10"
+                      style={{ color: "#3E8BE2" }}
+                    >
                       <input
                         type="checkbox"
                         style={{ color: "#3E8BE2" }}
@@ -543,7 +578,11 @@ const NewLogTable = () => {
                       />
                       10
                     </label>
-                    <label for="25" style={{ color: "#3E8BE2" }}>
+                    <label
+                      className="p-1"
+                      for="25"
+                      style={{ color: "#3E8BE2" }}
+                    >
                       <input
                         type="checkbox"
                         id="25"
@@ -554,7 +593,11 @@ const NewLogTable = () => {
                       />
                       25
                     </label>
-                    <label for="50" style={{ color: "#3E8BE2" }}>
+                    <label
+                      className="p-1"
+                      for="50"
+                      style={{ color: "#3E8BE2" }}
+                    >
                       <input
                         type="checkbox"
                         id="50"
@@ -565,7 +608,11 @@ const NewLogTable = () => {
                       />
                       50
                     </label>
-                    <label for="100" style={{ color: "#3E8BE2" }}>
+                    <label
+                      className="p-1"
+                      for="100"
+                      style={{ color: "#3E8BE2" }}
+                    >
                       <input
                         type="checkbox"
                         id="100"
@@ -611,20 +658,6 @@ const NewLogTable = () => {
                           <ExportCSVButton {...props.csvProps}>
                             Export CSV
                           </ExportCSVButton>
-                        </Col>
-                        <Col>
-                          <button
-                            type="button"
-                            onClick={saveSearch}
-                            style={{
-                              background: "#3E8BE2",
-                              fontWeight: "bold",
-                              verticalAlign: "center",
-                            }}
-                            className="btn btn-primary"
-                          >
-                            Save filter
-                          </button>
                         </Col>
 
                         <Col>
