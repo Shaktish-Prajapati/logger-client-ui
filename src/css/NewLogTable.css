@@ -142,3 +142,7 @@ th {
   color: white !important;
   font-weight: 400 !important;
 }
+
+input {
+  margin: 4px !important;
+}
