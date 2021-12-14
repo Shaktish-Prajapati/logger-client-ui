@@ -16,7 +16,9 @@ import {
     getAllLogByCodeReducer,
     createNewProjectReducer,
     getLogCountsReducer,
-    getLogCountsByDateReducer
+    getLogCountsByDateReducer,
+    getErrorWRTOSReducer,
+    getErrorWRTVersionReducer
 } from './reducer/ProjectReducer'
 
 
@@ -38,7 +40,10 @@ const appReducer = combineReducers({
     getAllLogByCodeReducer,
     createNewProjectReducer,
     getLogCountsReducer,
-    getLogCountsByDateReducer
+    getLogCountsByDateReducer,
+
+    getErrorWRTOSReducer,
+    getErrorWRTVersionReducer
 
 })
 

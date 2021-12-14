@@ -137,17 +137,31 @@ const columns = [
 ];
 const NewLogTable = () => {
   const [date, setDate] = useState({
-    start: "",
-    end: "",
+    start: localStorage.getItem("selected_date")
+      ? JSON.parse(localStorage.getItem("selected_date")).start
+      : "",
+    end: localStorage.getItem("selected_date")
+      ? JSON.parse(localStorage.getItem("selected_date")).end
+      : "",
   });
   const [logType, setLogType] = useState({
-    error: false,
-    info: false,
-    warn: false,
-    debug: false,
-    verbose: false,
+    error: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).error
+      : false,
+    info: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).info
+      : false,
+    warn: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).warn
+      : false,
+    debug: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).debug
+      : false,
+    verbose: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).verbose
+      : false,
   });
-  const [debug, setDebug] = useState("false");
+  // const [debug, setDebug] = useState("false");
   const [pageNo, setPageNo] = useState(0);
   const [record, setRecords] = useState(25);
   const [emptyDate, setEmptyDate] = useState(false);
@@ -164,10 +178,14 @@ const NewLogTable = () => {
     (state) => state.getAllLogByCodeReducer
   );
   const { loading, data } = getAllLogByCodeReducer;
-  console.log(code);
+  const dt = localStorage.getItem("selected_date");
+  console.log(JSON.parse(dt));
 
   const refreshButton = () => {
-    setDate("");
+    setDate({
+      start: "",
+      end: "",
+    });
     setLogType({
       error: false,
       info: false,
@@ -194,7 +212,10 @@ const NewLogTable = () => {
   const resetFilter = () => {
     startDateRef.current.value = "";
     endDatRef.current.value = "";
-    setDate("");
+    setDate({
+      start: "",
+      end: "",
+    });
     setPageNo(0);
     setLogType({
       error: false,
@@ -203,6 +224,9 @@ const NewLogTable = () => {
       debug: false,
       verbose: false,
     });
+
+    localStorage.removeItem("selected_log");
+    localStorage.removeItem("selected_date");
     // setLogType({...logType})
     dispatch(getProjectByCode(code, record));
   };
@@ -233,8 +257,18 @@ const NewLogTable = () => {
     },
   };
 
+  const saveSearch = () => {
+    console.log("save searches");
+    // localStorage.removeItem("name of localStorage variable you want to remove");
+    localStorage.setItem("selected_log", JSON.stringify(logType));
+    if (date.start.length > 0 || date.end.length > 0) {
+      localStorage.setItem("selected_date", JSON.stringify(date));
+    }
+    // localStorage.setItem("selected_log",logType)
+    // localStorage.setItem("selected_log",logType)
+  };
+
   useEffect(() => {
-    console.log("inside the logtype useEffect");
     if (
       logType.error ||
       logType.info ||
@@ -247,21 +281,22 @@ const NewLogTable = () => {
       setPageNo(0);
       dispatch(getProjectByCode(code, null, null, pageNo, record));
     }
-  }, [logType]);
+  }, [logType, pageNo, record]);
 
-  useEffect(() => {
-    if (
-      logType.error ||
-      logType.info ||
-      logType.warn ||
-      logType.debug ||
-      logType.verbose
-    ) {
-      dispatch(getProjectByCode(code, null, logType, pageNo, record));
-    } else {
-      dispatch(getProjectByCode(code, null, null, pageNo, record));
-    }
-  }, [pageNo, record]);
+  // useEffect(() => {
+  //   console.log("hello second useEffect")
+  //   if (
+  //     logType.error ||
+  //     logType.info ||
+  //     logType.warn ||
+  //     logType.debug ||
+  //     logType.verbose
+  //   ) {
+  //     dispatch(getProjectByCode(code, null, logType, pageNo, record));
+  //   } else {
+  //     dispatch(getProjectByCode(code, null, null, pageNo, record));
+  //   }
+  // }, [pageNo, record]);
 
   var expanded = false;
 
@@ -399,7 +434,7 @@ const NewLogTable = () => {
                               />
                             </Col>
                             <Col xl={12}>
-                              {" "}
+                              {/* {" "} */}
                               <button
                                 type="button"
                                 onClick={filterOnDate}
@@ -413,6 +448,22 @@ const NewLogTable = () => {
                                 className="btn btn-primary"
                               >
                                 Apply date
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={saveSearch}
+                                style={{
+                                  background: "#3E8BE2",
+                                  fontWeight: "bold",
+                                  float: "left",
+                                  verticalAlign: "center",
+                                  marginTop: "8%",
+                                  marginLeft: "8%",
+                                }}
+                                className="btn btn-primary"
+                              >
+                                Save filter
                               </button>
                             </Col>
                           </Row>

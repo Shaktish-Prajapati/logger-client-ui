@@ -15,6 +15,12 @@ import {
   GET_LOG_COUNT_BY_DATE_REQUEST,
   GET_LOG_COUNT_BY_DATE_SUCCESS,
   GET_LOG_COUNT_BY_DATE_FAIL,
+  GET_ERROR_WRT_OS_REQUEST,
+  GET_ERROR_WRT_OS_REQUEST_SUCCESS,
+  GET_ERROR_WRT_OS_REQUEST_FAIL,
+  GET_ERROR_COUNT_BY_VERSION_REQUEST,
+  GET_ERROR_COUNT_BY_VERSION_REQUEST_SUCCESS,
+  GET_ERROR_COUNT_BY_VERSION_REQUEST_FAIL
 } from "../types/ProjectConstants";
 
 export const getAllProject = () => async (dispatch) => {
@@ -98,7 +104,7 @@ export const getProjectByCode =
         for (const [key, value] of Object.entries(filters)) {
           if (value) {
             logString += `${key}-`;
-          } 
+          }
         }
         console.log(logString);
 
@@ -275,3 +281,71 @@ export const getLogByDate =
       });
     }
   };
+
+export const getErrorWRTOS = (code) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_ERROR_WRT_OS_REQUEST });
+    const token = localStorage.getItem("ddAdminToken");
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    console.log("hello from action from OS arch");
+
+    const { data } = await axios.get(
+      `https://logger-server.herokuapp.com/api/logger/projects/getErrorCountByOSArchitecture/${code}`,
+      config
+    );
+    console.log(data);
+    dispatch({
+      type: GET_ERROR_WRT_OS_REQUEST_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: GET_ERROR_WRT_OS_REQUEST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getErrorWRTVersion = (code) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_ERROR_COUNT_BY_VERSION_REQUEST });
+    const token = localStorage.getItem("ddAdminToken");
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    console.log("hello from action from OS arch");
+
+    const { data } = await axios.get(
+      `https://logger-server.herokuapp.com/api/logger/projects/getErrorCountByVersion/${code}`,
+      config
+    );
+    console.log(data);
+    dispatch({
+      type: GET_ERROR_COUNT_BY_VERSION_REQUEST_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: GET_ERROR_COUNT_BY_VERSION_REQUEST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

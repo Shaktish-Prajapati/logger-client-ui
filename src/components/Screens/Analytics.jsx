@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getLogTypeCounts,
   getLogByDate,
+  getErrorWRTOS,
+  getErrorWRTVersion,
 } from "../../redux/action/ProjectAction";
 import { Col, Row, Dropdown, DropdownButton, Container } from "react-bootstrap";
 import { multiSelectFilter } from "react-bootstrap-table2-filter";
@@ -17,6 +19,8 @@ import SpinLoader from "../utils/SpinLoader";
 import PieCharts from "../utils/PieChart";
 import LineGraphs from "../utils/LineGraphs";
 import DonutChart from "../utils/DonutChart";
+import OsArchitectureDonut from "../utils/OsArchitectureDonut";
+import ErrorWithVersion from "../utils/ErrorWithVersion";
 
 function Analytics() {
   const [date, setdate] = useState({
@@ -61,6 +65,8 @@ function Analytics() {
 
   const dispatchmultiple = () => {
     dispatch(getLogTypeCounts(code));
+    dispatch(getErrorWRTOS(code));
+    dispatch(getErrorWRTVersion(code));
     dispatch(getLogByDate(code, date));
   };
   useEffect(() => {
@@ -96,8 +102,19 @@ function Analytics() {
               className=""
               style={{ width: "420px" }}
             >
-              <DonutChart />
+              <ErrorWithVersion />
             </Col>
+            {/* <Col
+              sm={12}
+              md={4}
+              lg={3}
+              xl={3}
+              className=""
+              style={{ width: "420px" }}
+            >
+              
+              <DonutChart />
+            </Col> */}
             <Col
               sm={12}
               md={4}
@@ -107,7 +124,7 @@ function Analytics() {
               style={{ width: "420px" }}
             >
               {/* <PieCharts /> */}
-              <DonutChart />
+              <OsArchitectureDonut />
             </Col>
           </Row>
           <Row>
