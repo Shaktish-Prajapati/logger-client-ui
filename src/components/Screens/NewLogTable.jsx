@@ -8,7 +8,7 @@ import filterFactory, {
   textFilter,
 } from "react-bootstrap-table2-filter";
 import {
-  faDatabase,
+  faHome,
   faWrench,
   faCopy,
   faPlus,
@@ -137,23 +137,37 @@ const columns = [
 ];
 const NewLogTable = () => {
   const [date, setDate] = useState({
-    start: "",
-    end: "",
+    start: localStorage.getItem("selected_date")
+      ? JSON.parse(localStorage.getItem("selected_date")).start
+      : "",
+    end: localStorage.getItem("selected_date")
+      ? JSON.parse(localStorage.getItem("selected_date")).end
+      : "",
   });
   const [logType, setLogType] = useState({
-    error: false,
-    info: false,
-    warn: false,
-    debug: false,
-    verbose: false,
+    error: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).error
+      : false,
+    info: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).info
+      : false,
+    warn: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).warn
+      : false,
+    debug: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).debug
+      : false,
+    verbose: localStorage.getItem("selected_log")
+      ? JSON.parse(localStorage.getItem("selected_log")).verbose
+      : false,
   });
-  const [debug, setDebug] = useState("false");
+  // const [debug, setDebug] = useState("false");
   const [pageNo, setPageNo] = useState(0);
   const [record, setRecords] = useState(25);
   const [emptyDate, setEmptyDate] = useState(false);
 
-  const startDateRef = useRef("");
-  const endDatRef = useRef("");
+  const startDateRef = useRef(null);
+  const endDatRef = useRef(null);
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -164,10 +178,14 @@ const NewLogTable = () => {
     (state) => state.getAllLogByCodeReducer
   );
   const { loading, data } = getAllLogByCodeReducer;
-  console.log(code);
+  const dt = localStorage.getItem("selected_date");
+  console.log(JSON.parse(dt));
 
   const refreshButton = () => {
-    setDate("");
+    setDate({
+      start: "",
+      end: "",
+    });
     setLogType({
       error: false,
       info: false,
@@ -192,7 +210,12 @@ const NewLogTable = () => {
   };
 
   const resetFilter = () => {
-    setDate("");
+    startDateRef.current.value = "";
+    endDatRef.current.value = "";
+    setDate({
+      start: "",
+      end: "",
+    });
     setPageNo(0);
     setLogType({
       error: false,
@@ -201,8 +224,9 @@ const NewLogTable = () => {
       debug: false,
       verbose: false,
     });
-    startDateRef.current.value = "";
-    endDatRef.current.value = "";
+
+    localStorage.removeItem("selected_log");
+    localStorage.removeItem("selected_date");
     // setLogType({...logType})
     dispatch(getProjectByCode(code, record));
   };
@@ -222,7 +246,7 @@ const NewLogTable = () => {
     name: projectName,
     dashName: projectName,
     link1: {
-      iconName: faDatabase,
+      iconName: faHome,
       linkName: "Logs",
       link: `/newlogTable?code=${code}&name=${projectName}`,
     },
@@ -233,8 +257,18 @@ const NewLogTable = () => {
     },
   };
 
+  const saveSearch = () => {
+    console.log("save searches");
+    // localStorage.removeItem("name of localStorage variable you want to remove");
+    localStorage.setItem("selected_log", JSON.stringify(logType));
+    if (date.start.length > 0 || date.end.length > 0) {
+      localStorage.setItem("selected_date", JSON.stringify(date));
+    }
+    // localStorage.setItem("selected_log",logType)
+    // localStorage.setItem("selected_log",logType)
+  };
+
   useEffect(() => {
-    console.log("inside the logtype useEffect");
     if (
       logType.error ||
       logType.info ||
@@ -247,21 +281,22 @@ const NewLogTable = () => {
       setPageNo(0);
       dispatch(getProjectByCode(code, null, null, pageNo, record));
     }
-  }, [logType]);
+  }, [logType, pageNo, record]);
 
-  useEffect(() => {
-    if (
-      logType.error ||
-      logType.info ||
-      logType.warn ||
-      logType.debug ||
-      logType.verbose
-    ) {
-      dispatch(getProjectByCode(code, null, logType, pageNo, record));
-    } else {
-      dispatch(getProjectByCode(code, null, null, pageNo, record));
-    }
-  }, [pageNo, record]);
+  // useEffect(() => {
+  //   console.log("hello second useEffect")
+  //   if (
+  //     logType.error ||
+  //     logType.info ||
+  //     logType.warn ||
+  //     logType.debug ||
+  //     logType.verbose
+  //   ) {
+  //     dispatch(getProjectByCode(code, null, logType, pageNo, record));
+  //   } else {
+  //     dispatch(getProjectByCode(code, null, null, pageNo, record));
+  //   }
+  // }, [pageNo, record]);
 
   var expanded = false;
 
@@ -295,73 +330,90 @@ const NewLogTable = () => {
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
-      // 1) before table loading contents here not to load on when filtering
+      {/* <ProjectSideBar /> */}
+      {/* <div style={{paddingTop:'1%'}}> */}
       <Container>
-        <div style={{ marginTop: "9%", width: "84%", float: "right" }}>
-          <Row>
+        <div style={{ marginTop: "12%", width: "84%", float: "right" }}>
+          <div className="row">
             <Col>
-              <Col xl={12}>
-                <label
-                  style={{
-                    color: "#3E8BE2",
-                    fontWeight: "bold",
-                    float: "left",
-                  }}
-                >
-                  Start date
-                </label>
-                <input
-                  type="date"
-                  ref={startDateRef}
-                  value={date.start}
-                  onChange={(e) => setDate({ ...date, start: e.target.value })}
-                  className={
-                    emptyDate ? "dateempty form-control" : "form-control"
-                  }
-                  style={{
-                    color: "#3E8BE2",
-                    fontWeight: "bold",
-                  }}
-                />
-              </Col>
-              <Col xl={12}>
-                <label
-                  style={{
-                    color: "#3E8BE2",
-                    fontWeight: "bold",
-                    float: "left",
-                  }}
-                >
-                  End date
-                </label>
-                <input
-                  type="date"
-                  ref={endDatRef}
-                  max={Date.now()}
-                  value={date.end}
-                  onChange={(e) => setDate({ ...date, end: e.target.value })}
-                  className={
-                    emptyDate ? "dateempty form-control" : "form-control"
-                  }
-                  style={{
-                    color: "#3E8BE2",
-                    fontWeight: "bold",
-                  }}
-                />
-                <Row className="mt-3">
-                  <Col>
-                    <button
-                      type="button"
-                      onClick={filterOnDate}
-                      className="btn btn-primary"
-                    >
-                      Apply date
-                    </button>
-                  </Col>
-                </Row>
-              </Col>
+              <Row>
+                <Col xl={12}>
+                  {" "}
+                  <label
+                    style={{
+                      color: "#3E8BE2",
+                      fontWeight: "bold",
+                      float: "left",
+                    }}
+                  >
+                    Start date{" "}
+                  </label>
+                  <input
+                    type="date"
+                    ref={startDateRef}
+                    value={date.start}
+                    onChange={(e) =>
+                      setDate({ ...date, start: e.target.value })
+                    }
+                    className={
+                      emptyDate ? "dateempty form-control" : "form-control"
+                    }
+                    style={{
+                      color: "#3E8BE2",
+                      fontWeight: "bold",
+                      float: "left",
+                    }}
+                  />
+                </Col>
+                <Col xl={12}>
+                  {" "}
+                  <label
+                    style={{
+                      color: "#3E8BE2",
+                      fontWeight: "bold",
+                      float: "left",
+                    }}
+                  >
+                    End date{" "}
+                  </label>
+                  <input
+                    type="date"
+                    ref={endDatRef}
+                    max={Date.now()}
+                    value={date.end}
+                    onChange={(e) => setDate({ ...date, end: e.target.value })}
+                    className={
+                      emptyDate ? "dateempty form-control" : "form-control"
+                    }
+                    style={{
+                      color: "#3E8BE2",
+                      fontWeight: "bold",
+                      float: "left",
+                    }}
+                  />
+                </Col>
+                <Col xl={12}>
+                  {/* {" "} */}
+                  <button
+                    type="button"
+                    onClick={filterOnDate}
+                    style={{
+                      background: "#3E8BE2",
+                      fontWeight: "bold",
+                      float: "left",
+                      verticalAlign: "center",
+                      marginTop: "8%",
+                    }}
+                    className="btn btn-primary"
+                  >
+                    Apply date
+                  </button>
+                </Col>
+              </Row>
             </Col>
-            <Col
+
+            <div
+              className="col "
               style={{
                 justifyContent: "center",
                 alignItems: "center",
@@ -459,27 +511,22 @@ const NewLogTable = () => {
                     </div>
                   </div>
                 </Col>
-
-                <Col lg={12}>
-                  <Row className="mt-3">
-                    <Col>
-                      <button
-                        type="button"
-                        onClick={resetFilter}
-                        className="btn btn-primary"
-                      >
-                        Reset Filter
-                      </button>
-                    </Col>
-                    <Col>
-                      <button type="button" className="btn btn-primary">
-                        Save Filter
-                      </button>
-                    </Col>
-                  </Row>
+                <Col className="mt-3">
+                  <button
+                    type="button"
+                    onClick={resetFilter}
+                    style={{
+                      background: "#3E8BE2",
+                      fontWeight: "bold",
+                    }}
+                    className="btn btn-primary"
+                  >
+                    Reset Filter
+                  </button>
                 </Col>
               </Row>
-            </Col>
+            </div>
+
             <Col>
               <div className="col pagesOption" style={{ marginTop: "35px" }}>
                 <div className="pagesOption">
@@ -533,11 +580,8 @@ const NewLogTable = () => {
                 </div>
               </div>
             </Col>
-          </Row>
-        </div>
-      </Container>
-      <Container>
-        <div style={{ marginTop: "4%", width: "84%", float: "right" }}>
+          </div>
+
           {loading ? (
             <SpinLoader />
           ) : (
@@ -554,49 +598,57 @@ const NewLogTable = () => {
                   search
                 >
                   {(props) => (
-                    <Container>
-                      <div className="logtableStyle">
-                        <Row>
-                          <Col>
-                            <Row>
-                              <Col>
-                                <SearchBar
-                                  style={{ width: "100%", display: "block" }}
-                                  {...props.searchProps}
-                                  placeholder="Enter filter..."
-                                />
-                              </Col>
-                              <Col>
-                                <ExportCSVButton {...props.csvProps}>
-                                  Export CSV
-                                </ExportCSVButton>
-                              </Col>
-                            </Row>
-                          </Col>
+                    <div className="logtableStyle" className="mt-5">
+                      <Row>
+                        <Col>
+                          <SearchBar
+                            style={{ width: "100%", display: "block" }}
+                            {...props.searchProps}
+                            placeholder="Enter filter..."
+                          />
+                        </Col>
+                        <Col>
+                          <ExportCSVButton {...props.csvProps}>
+                            Export CSV
+                          </ExportCSVButton>
+                        </Col>
+                        <Col>
+                          <button
+                            type="button"
+                            onClick={saveSearch}
+                            style={{
+                              background: "#3E8BE2",
+                              fontWeight: "bold",
+                              verticalAlign: "center",
+                            }}
+                            className="btn btn-primary"
+                          >
+                            Save filter
+                          </button>
+                        </Col>
 
-                          <Col>
-                            <IoIcons.IoIosRefreshCircle
-                              onClick={refreshButton}
-                              className="refreshButton"
-                            />
-                          </Col>
-                        </Row>
+                        <Col>
+                          <IoIcons.IoIosRefreshCircle
+                            onClick={refreshButton}
+                            className="refreshButton"
+                          />
+                        </Col>
+                      </Row>
 
-                        <p className="mt-2"></p>
-                        <BootstrapTable
-                          selectRow={selectRow}
-                          filter={filterFactory()}
-                          {...props.baseProps}
-                          noDataIndication="No data found"
-                          // pagination={ paginationFactory({
-                          //   // custom: true,
-                          //   sizePerPage:25,
-                          //   totalSize: data.data.logs.length
-                          // })
-                          // }
-                        />
-                      </div>
-                    </Container>
+                      <p className="mt-2"></p>
+                      <BootstrapTable
+                        selectRow={selectRow}
+                        filter={filterFactory()}
+                        {...props.baseProps}
+                        noDataIndication="No data found"
+                        // pagination={ paginationFactory({
+                        //   // custom: true,
+                        //   sizePerPage:25,
+                        //   totalSize: data.data.logs.length
+                        // })
+                        // }
+                      />
+                    </div>
                   )}
                 </ToolkitProvider>
               ) : (
@@ -632,6 +684,7 @@ const NewLogTable = () => {
 
           */}
       </Container>
+
       {/* </div> */}
     </>
   );

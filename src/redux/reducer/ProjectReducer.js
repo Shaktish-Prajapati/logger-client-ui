@@ -14,6 +14,12 @@ import {
   GET_LOG_COUNT_BY_DATE_REQUEST,
   GET_LOG_COUNT_BY_DATE_SUCCESS,
   GET_LOG_COUNT_BY_DATE_FAIL,
+  GET_ERROR_WRT_OS_REQUEST,
+  GET_ERROR_WRT_OS_REQUEST_SUCCESS,
+  GET_ERROR_WRT_OS_REQUEST_FAIL,
+  GET_ERROR_COUNT_BY_VERSION_REQUEST,
+  GET_ERROR_COUNT_BY_VERSION_REQUEST_SUCCESS,
+  GET_ERROR_COUNT_BY_VERSION_REQUEST_FAIL,
 } from "../types/ProjectConstants";
 
 export const getAllProjectReducer = (state = {}, action) => {
@@ -109,6 +115,46 @@ export const getLogCountsByDateReducer = (state = {}, action) => {
         data: action.payload,
       };
     case GET_LOG_COUNT_BY_DATE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const getErrorWRTOSReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_ERROR_WRT_OS_REQUEST:
+      return { loading: true };
+
+    case GET_ERROR_WRT_OS_REQUEST_SUCCESS:
+      return {
+        loading: false,
+        data: action.payload,
+      };
+    case GET_ERROR_WRT_OS_REQUEST_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const getErrorWRTVersionReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_ERROR_COUNT_BY_VERSION_REQUEST:
+      return { loading: true };
+
+    case GET_ERROR_COUNT_BY_VERSION_REQUEST_SUCCESS:
+      return {
+        loading: false,
+        data: action.payload,
+      };
+    case GET_ERROR_COUNT_BY_VERSION_REQUEST_FAIL:
       return {
         loading: false,
         error: action.payload,

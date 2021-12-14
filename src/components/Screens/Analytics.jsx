@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
-import {
-  faDatabase,
-  faChartPie,
-  faFontAwesomeLogoFull,
-} from "@fortawesome/free-solid-svg-icons";
+import { faDatabase, faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getLogTypeCounts,
   getLogByDate,
+  getErrorWRTOS,
+  getErrorWRTVersion,
 } from "../../redux/action/ProjectAction";
-import {
-  Col,
-  Row,
-  Dropdown,
-  DropdownButton,
-  Container,
-  Card,
-} from "react-bootstrap";
+import { Col, Row, Dropdown, DropdownButton, Container } from "react-bootstrap";
 import { multiSelectFilter } from "react-bootstrap-table2-filter";
 
 // todo : 1:2 custome imports
@@ -28,8 +19,9 @@ import SpinLoader from "../utils/SpinLoader";
 import PieCharts from "../utils/PieChart";
 import LineGraphs from "../utils/LineGraphs";
 import DonutChart from "../utils/DonutChart";
-import { Button } from "bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import OsArchitectureDonut from "../utils/OsArchitectureDonut";
+import ErrorWithVersion from "../utils/ErrorWithVersion";
+
 function Analytics() {
   const [date, setdate] = useState({
     start: null,
@@ -73,20 +65,27 @@ function Analytics() {
 
   const dispatchmultiple = () => {
     dispatch(getLogTypeCounts(code));
+    dispatch(getErrorWRTOS(code));
+    dispatch(getErrorWRTVersion(code));
     dispatch(getLogByDate(code, date));
   };
   useEffect(() => {
     dispatchmultiple();
   }, [date]);
-
   return (
     <>
       <Navbarr navbardetails={navbardetail} />
 
       <Container>
-        <div style={{ marginTop: "9%", width: "84%", float: "right" }}>
+        <div
+          style={{
+            marginTop: "2%",
+            width: "84%",
+            float: "right",
+          }}
+        >
           <Row>
-            <Col className="" style={{ width: "420px" }}>
+            <Col style={{ width: "420px" }}>
               <Row>
                 <Col>
                   <DonutChart />
@@ -94,12 +93,12 @@ function Analytics() {
               </Row>
               <Row style={{ marginTop: "-180px" }}>
                 <Col>
-                  <DonutChart />
+                  <ErrorWithVersion />
                 </Col>
               </Row>
               <Row style={{ marginTop: "-180px" }}>
                 <Col>
-                  <DonutChart />
+                  <OsArchitectureDonut />
                 </Col>
               </Row>
             </Col>
@@ -237,6 +236,7 @@ function Analytics() {
                     style={{
                       color: "#3E8BE2",
                       fontWeight: "bold",
+                      float: "left",
                     }}
                   />
                 </label>
@@ -246,6 +246,7 @@ function Analytics() {
                   style={{
                     color: "#3E8BE2",
                     fontWeight: "bold",
+                    float: "left",
                   }}
                 >
                   End date
@@ -285,12 +286,12 @@ function Analytics() {
                 </DropdownButton>
               </Col>
             </Row>
+            <Row className="d-flex justify-content-center align-items-center">
+              <Col>
+                <LineGraphs />
+              </Col>
+            </Row>
           </Container>
-          <Row>
-            <Col>
-              <LineGraphs />
-            </Col>
-          </Row>
         </div>
       </Container>
     </>
