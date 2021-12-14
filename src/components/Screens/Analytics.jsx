@@ -125,7 +125,7 @@ function Analytics() {
                       className="Active"
                       style={{
                         color: "#fff",
-                        fontSize: "1.4rem",
+                        fontSize: "1.3rem",
                         fontWeight: "600",
                       }}
                     >
@@ -144,7 +144,7 @@ function Analytics() {
                   <span
                     style={{
                       color: "#fff",
-                      fontSize: "1.4rem",
+                      fontSize: "1.3rem",
                       fontWeight: "600",
                     }}
                   >
@@ -161,7 +161,7 @@ function Analytics() {
                   <span
                     style={{
                       color: "#fff",
-                      fontSize: "1.4rem",
+                      fontSize: "1.3rem",
                       fontWeight: "600",
                     }}
                   >
@@ -178,7 +178,7 @@ function Analytics() {
                   <span
                     style={{
                       color: "#fff",
-                      fontSize: "1.4rem",
+                      fontSize: "1.3rem",
                       fontWeight: "600",
                     }}
                   >
@@ -197,7 +197,7 @@ function Analytics() {
                   <span
                     style={{
                       color: "#fff",
-                      fontSize: "1.4rem",
+                      fontSize: "1.3rem",
                       fontWeight: "600",
                     }}
                   >
@@ -206,7 +206,7 @@ function Analytics() {
                   <span
                     style={{
                       color: "#fff",
-                      fontSize: "1.4rem",
+                      fontSize: "1.3rem",
                       fontWeight: "600",
                     }}
                   >
