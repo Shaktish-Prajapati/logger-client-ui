@@ -654,7 +654,7 @@ const NewLogTable = () => {
                             placeholder="Enter filter..."
                           />
                         </Col>
-                        <Col>
+                        <Col className="mt-1">
                           <ExportCSVButton {...props.csvProps}>
                             Export CSV
                           </ExportCSVButton>

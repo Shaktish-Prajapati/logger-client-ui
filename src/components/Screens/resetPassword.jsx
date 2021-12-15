@@ -34,9 +34,10 @@ export default function ResetPassword() {
                 numInputs={6}
                 inputStyle={{
                   borderRadius: "10px",
-                  border: "2px solid #3E8BE2 ",
+                  border: "1px solid #3E8BE2 ",
                   width: "30px",
                   height: "30px",
+                  margin :"2px"
                 }}
                 separator={<span></span>}
               />
@@ -57,7 +58,7 @@ export default function ResetPassword() {
             </span>
             <input
               type="password"
-              className="form-control LoginForminput "
+              className="form-control LoginForminput mt-4 "
               id="exampleInputEmail1"
               placeholder="Confime your new password"
               aria-describedby="emailHelp"
@@ -76,7 +77,7 @@ export default function ResetPassword() {
                 borderRadius: "10px",
                 fontStyle: "normal normal 600 23px/34px Poppins;",
               }}
-              className="btn col w-50"
+              className="btn col w-50 mt-4"
               onClick={() => {}}
             >
               Submit

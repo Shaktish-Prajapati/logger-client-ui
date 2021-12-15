@@ -143,6 +143,6 @@ th {
   font-weight: 400 !important;
 }
 
-input {
+.pagesOption label input {
   margin: 4px !important;
 }
